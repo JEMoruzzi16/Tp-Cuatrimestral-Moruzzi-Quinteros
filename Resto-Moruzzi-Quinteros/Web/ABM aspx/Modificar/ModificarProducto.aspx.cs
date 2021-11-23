@@ -44,7 +44,7 @@ namespace Web
         }
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../Contact.aspx");
+            Response.Redirect("../../Home.aspx");
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {

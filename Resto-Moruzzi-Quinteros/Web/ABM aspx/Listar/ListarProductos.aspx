@@ -1,25 +1,30 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListarProductos.aspx.cs" Inherits="Web.ListarProductos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
-
-    <h2 style="text-align:center">Lista de Productos disponibles</h2>
     <br />
-
     <div>
-       <asp:Label Text="Seleccione una categoria:" runat="server" />
+        <p class="h2" style="text-align:center">Lista de Platos disponibles</p>
+    </div>
+    <div class="container" style="width:30%">
         <br />
-        <asp:DropDownList runat="server" ID="ddlTipoProducto" OnSelectedIndexChanged="ddlTipoProducto_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>    
-    </div>
+        <div class="input-group mb-3">
+           <label class="input-group-text" for="inputGroupSelect01">Categoría</label>            
+            <asp:DropDownList ID="ddlTipoProducto" class="form-select" OnSelectedIndexChanged="ddlTipoProducto_SelectedIndexChanged" runat="server" AutoPostBack="true"></asp:DropDownList>    
+        </div>
 
-    <div style="display:flex">
-        <div style="padding-right:40px">   
-        <asp:GridView ID="dgvProductos" runat="server" OnRowDataBound="dgvProductos_RowDataBound"></asp:GridView> 
+        <div style="display:flex">
+            <div >   
+            <asp:GridView ID="dgvProductos" runat="server" class="form-select" OnRowDataBound="dgvProductos_RowDataBound"></asp:GridView> 
+            </div>
         </div>
-        <div>
-        <asp:GridView ID="dgvTipoDeProducto" runat="server"></asp:GridView>
+        <br />
+        <div style="display:flex" >
+            <div style="margin-right:50px">
+                <asp:Button Text="Volver" ID="btnVolver" class="btn btn-outline-secondary" runat="server" OnClick="btnVolver_Click" />
+            </div>
+            <div >
+                <asp:Button Text="Agregar Nuevo Plato" ID="btnNuevoProducto" class="btn btn-outline-secondary" runat="server" OnClick="btnNuevoProducto_Click"/>
+            </div>
         </div>
+
     </div>
-    <br />
-    <asp:Button Text="Volver" ID="btnVolver" runat="server" OnClick="btnVolver_Click" />
-    
 </asp:Content>

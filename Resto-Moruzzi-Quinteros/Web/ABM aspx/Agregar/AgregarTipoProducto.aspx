@@ -1,31 +1,24 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AgregarTipoProducto.aspx.cs" Inherits="Web.AgregarTipoProducto" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <br />  
-    <h2>Agregar nuevo Tipo de Producto</h2>
-    <br />  
-    <div>
-        <asp:GridView ID="dgvTipoDeProducto" runat="server" autoPostBack="true"></asp:GridView>
-    </div>
     <br />
     <div>
-        <asp:Label ID="lvbNombre" runat="server" Text="Nombre del tipo de producto:"></asp:Label>
-        <asp:TextBox ID="txbNombre" runat="server"></asp:TextBox>
-        <br />
-        <asp:Label ID="lblMensaje" runat="server" ></asp:Label>
-    
+        <p class="h2" style="text-align:center">Nueva Categoría</p>
     </div>
-    <br />  
-    <div style="display:flex">
-        <div style="padding-right:40px">
-            <asp:Button ID="btnAceptar" runat="server" Text="Aceptar" OnClick="btnAceptar_Click"  />
+    <br />
+    <div class="container" style="width:28%">
+          
+        <div class="input-group mb-3">
+            <asp:TextBox ID="txbNombre" class="form-control" placeholder="Nombre nueva Categoría" aria-label="Recipient's categoria" aria-describedby="basic-addon2" runat="server"></asp:TextBox>
         </div>
-        <div>
-            <asp:Button ID="btnCancelar" Text="Cancelar" OnClick="btnCancelar_Click" runat="server" />
-        </div>
+        <div style="display:flex">
+            <div style="padding-right:100px">
+                <asp:Button ID="btnAceptar" Text="Aceptar" class="btn btn-outline-secondary"  OnClick="btnAceptar_Click" runat="server"  />
+            </div>
+            <div>
+                <asp:Button ID="btnCancelar" Text="Cancelar" class="btn btn-outline-secondary"  OnClick="btnCancelar_Click" runat="server" />
+            </div>
     
+         </div>
     </div>
-
-
-
 </asp:Content>

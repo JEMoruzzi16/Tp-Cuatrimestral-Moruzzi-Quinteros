@@ -22,7 +22,12 @@ namespace Web.ABM_aspx.Listar
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../Contact.aspx");
+            Response.Redirect("../../Home.aspx");
+        }
+
+        protected void btnNuevoTipo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Agregar/AgregarTipoProducto.aspx");
         }
     }
 }

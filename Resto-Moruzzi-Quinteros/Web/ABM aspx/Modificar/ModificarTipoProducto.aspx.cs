@@ -36,10 +36,6 @@ namespace Web.ABM_aspx.Modificar
 
         }
 
-        protected void btnCancelar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("../../Contact.aspx");
-        }
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
@@ -65,6 +61,10 @@ namespace Web.ABM_aspx.Modificar
         }
         protected void ddlTipos_TextChanged(object sender, EventArgs e)
         {    
+        }
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../../Home.aspx");
         }
     }
 }

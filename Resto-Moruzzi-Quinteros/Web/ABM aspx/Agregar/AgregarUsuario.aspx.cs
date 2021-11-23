@@ -43,5 +43,10 @@ namespace Web
             usuarioServicio.agregar(newUser);
             Response.Redirect("GerentePanel.aspx");
         }
+        protected void btnCancealar_Click2(object sender, EventArgs e)
+        {
+            Response.Redirect("../../Home.Aspx");
+
+        }
     }
 }
