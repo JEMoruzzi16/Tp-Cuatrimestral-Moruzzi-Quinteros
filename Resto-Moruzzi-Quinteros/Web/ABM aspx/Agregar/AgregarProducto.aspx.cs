@@ -18,8 +18,9 @@ namespace Web
             ProductoServicio productoServicio = new ProductoServicio();
             try
             {
-                if(!IsPostBack)
+                if (!IsPostBack)
                 {
+                    
                     List<Producto> listProducto = productoServicio.listar();
                     //Session["listaTipoProducto"] = listTipo;
                     Session["listaProducto"] = listProducto;
@@ -40,6 +41,10 @@ namespace Web
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+            
             Producto producto = new Producto();
             ProductoServicio productoServicio = new ProductoServicio();
 

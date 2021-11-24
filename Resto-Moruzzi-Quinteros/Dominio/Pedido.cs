@@ -14,6 +14,13 @@ namespace Dominio
         public List<Producto> PlatosElegidos { get; set; }
         public Decimal Monto { get; set; }
         public int IdMetodoPago { get; set; }
+        public Boolean Estado { get; set; }
+
+        void agregarPlato()
+        {
+
+
+        }
 
     }
 }

@@ -36,9 +36,9 @@ namespace Web.ABM_aspx.Modificar
 
         }
 
-
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            
             TipoDeProducto tipo = new TipoDeProducto();
             TipoDeProductoServicio servicio = new TipoDeProductoServicio();
             try
@@ -54,14 +54,6 @@ namespace Web.ABM_aspx.Modificar
             }
         }
 
-        protected void ddlTipos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            txtNombre.Enabled = true;
-
-        }
-        protected void ddlTipos_TextChanged(object sender, EventArgs e)
-        {    
-        }
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             Response.Redirect("../../Home.aspx");

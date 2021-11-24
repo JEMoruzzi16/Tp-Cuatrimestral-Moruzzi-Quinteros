@@ -18,6 +18,7 @@ namespace Web
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+            
             TipoDeProducto tipo = new TipoDeProducto();
             TipoDeProductoServicio serviciotipo = new TipoDeProductoServicio();
             try

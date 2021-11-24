@@ -27,9 +27,9 @@ namespace Web.ABM_aspx.Eliminar
         }
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-           /* Falta corregir el drowDownlist para poder probar si elimina o no.
-            * Comente la funcionalidad para evitar romper algo haciendo click en aceptar.*/
-
+           /*NO elimina, hay un temita con el SelectedItem.Value, con el punto de 
+            * interrupcion correbore y toma un valor siempre 0
+            * */
             TipoDeProducto tipo = new TipoDeProducto();
             TipoDeProductoServicio servicio = new TipoDeProductoServicio();
             try
