@@ -113,12 +113,8 @@
     <Content Include="ABM aspx\Listar\ListarUsuario.aspx" />
     <Content Include="ABM aspx\Modificar\ModificarTipoProducto.aspx" />
     <Content Include="ABM aspx\Modificar\ModificarUsuario.aspx" />
-    <Content Include="About.aspx" />
     <Content Include="ABM aspx\Agregar\AgregarProducto.aspx" />
     <Content Include="ABM aspx\Agregar\AgregarTipoProducto.aspx" />
-    <Content Include="Contact.aspx">
-      <BrowseToURL>~/Contact.aspx</BrowseToURL>
-    </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -126,11 +122,15 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="ABM aspx\Eliminar\EliminarProducto.aspx" />
+    <Content Include="Content\styles.css" />
+    <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Home.aspx" />
+    <Content Include="HomeGerente.aspx" />
+    <Content Include="HomeMesero.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="Logueo.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -156,6 +156,8 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="ABM aspx\Listar\ListarProductos.aspx" />
     <Content Include="ABM aspx\Modificar\ModificarProducto.aspx" />
+    <Content Include="Login.Master" />
+    <Content Include="HomeMesero.Master" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -318,34 +320,20 @@
       <DependentUpon>ModificarUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="About.aspx.designer.cs">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Contact.aspx.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="ABM aspx\Eliminar\EliminarProducto.aspx.cs">
       <DependentUpon>EliminarProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ABM aspx\Eliminar\EliminarProducto.aspx.designer.cs">
       <DependentUpon>EliminarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -364,12 +352,47 @@
     <Compile Include="ABM aspx\Modificar\ModificarProducto.aspx.designer.cs">
       <DependentUpon>ModificarProducto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="HomeGerente.aspx.cs">
+      <DependentUpon>HomeGerente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="HomeGerente.aspx.designer.cs">
+      <DependentUpon>HomeGerente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HomeMesero.aspx.cs">
+      <DependentUpon>HomeMesero.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomeMesero.aspx.designer.cs">
+      <DependentUpon>HomeMesero.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HomeMesero.Master.cs">
+      <DependentUpon>HomeMesero.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HomeMesero.Master.designer.cs">
+      <DependentUpon>HomeMesero.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.Master.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.Master.designer.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Logueo.aspx.cs">
+      <DependentUpon>Logueo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logueo.aspx.designer.cs">
+      <DependentUpon>Logueo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">

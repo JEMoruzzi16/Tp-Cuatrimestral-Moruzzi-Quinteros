@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
+using Servicio;
 
 namespace Servicio
 {
@@ -47,7 +48,7 @@ namespace Servicio
                     Usuario aux = new Usuario();
                     aux.NombreUsuario = datos.Lector["Usuario"].ToString();
                     aux.Contrasena = datos.Lector["Contrasena"].ToString();
-                    aux.Tipo = (byte)datos.Lector["Tipo"];
+                    aux.Tipo = (TipoUsuario)datos.Lector["Tipo"];
                     aux.Estado = (bool)datos.Lector["Estado"];
                     
                     lista.Add(aux);
@@ -79,7 +80,7 @@ namespace Servicio
                 {
                     aux.NombreUsuario = (string)data.Lector["Usuario"];
                     aux.Contrasena = (string)data.Lector["Contrasena"];
-                    aux.Tipo = (Byte)data.Lector["Tipo"];
+                    aux.Tipo = (TipoUsuario)data.Lector["Tipo"];
                 }
 
                 return aux; 
@@ -95,5 +96,60 @@ namespace Servicio
             }
         }
 
+
+        public bool Loguear(Usuario usuario)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT Usr.Usuario, Usr.Contrasena, Usr.Tipo, Usr.Estado FROM Usuarios as Usr where Usr.Usuario = @user AND Usr.Contrasena = @pass ");
+                datos.setearParametro("@User", usuario.NombreUsuario);
+                datos.setearParametro("@pass", usuario.Contrasena);
+
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    usuario.Tipo = (int)(datos.Lector["TipoUser"]) == 2 ? TipoUsuario.GERENTE : TipoUsuario.MESERO;
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void identificarUser(Usuario user)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("SELECT Usr.Usuario, Usr.Contrasena, Usr.Tipo, Usr.Estado FROM Usuarios as Usr where Usr.Usuario = @user AND Usr.Contrasena = @pass ");
+                datos.setearParametro("@User", user.NombreUsuario);
+                datos.setearParametro("@pass", user.Contrasena);
+
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+
+                    user.Tipo = (int)(datos.Lector["TipoUser"]) == 2 ? TipoUsuario.GERENTE : TipoUsuario.MESERO;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
+
+
 }

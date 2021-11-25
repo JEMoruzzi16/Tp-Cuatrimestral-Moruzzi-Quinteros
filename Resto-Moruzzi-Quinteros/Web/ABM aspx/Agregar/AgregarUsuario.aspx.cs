@@ -35,9 +35,9 @@ namespace Web
             newUser.Contrasena = txtContrasena.Text;
             if (ddlTipo.SelectedValue.Contains("Gerente"))
             {
-                newUser.Tipo = 1;
+               // newUser.Tipo = (TipoUsuario)"Gerente";
             }
-            else if(ddlTipo.SelectedValue.Contains("Mesero")){ newUser.Tipo = 2; }
+            //else if(ddlTipo.SelectedValue.Contains("Mesero")){ newUser.Tipo = 2; }
 
             datosPersonalesServicio.agregar(newData);
             usuarioServicio.agregar(newUser);

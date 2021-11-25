@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Web
 {
-    public partial class _Default : Page
+    public partial class Logueo : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

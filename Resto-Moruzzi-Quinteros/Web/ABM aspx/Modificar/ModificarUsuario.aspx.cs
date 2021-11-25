@@ -28,19 +28,19 @@ namespace Web.ABM_aspx.Modificar
                 string nombreUsuario = aux.NombreUsuario;
                 txtUsuario.Text = nombreUsuario;
                 txtContrasena.Text = aux.Contrasena;
-                byte tipe = aux.Tipo;
+                TipoUsuario tipe = aux.Tipo;
                 string tipo="";
                 
-                switch (tipe)
-                {
-                    case 1:
-                        tipo = "Gerente";
-                        break;
-                    case 2:
-                        tipo = "Mesero";
-                        break;
-                }
-                ddlTipo.SelectedItem.Text.Contains(tipo);
+                //switch (tipe.)
+                //{
+                //    case 1:
+                //        tipo = "Gerente";
+                //        break;
+                //    case 2:
+                //        tipo = "Mesero";
+                //        break;
+                //}
+                //ddlTipo.SelectedItem.Text.Contains(tipo);
 
 
             }
