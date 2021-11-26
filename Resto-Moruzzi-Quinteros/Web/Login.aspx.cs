@@ -18,6 +18,13 @@ namespace Web
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
+            /*
+             * 
+             * DESACTIVADO, EN PRINCIPIO TRABAJANDO EN LOGUEO.
+             * SI LOGUEO FUNCIONA, ANALIZAR SI ESTE CODIGO SE QUEDA O SE VA.
+             * 
+             * 
+             * 
             Usuario usuario;
             UsuarioServicio servicio = new UsuarioServicio();
 
@@ -48,7 +55,7 @@ namespace Web
                 Response.Redirect("Error.aspx", false);
                
             }
-
+            */
         }
 
     }

@@ -1,8 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Pages/Login.Master" AutoEventWireup="true" CodeBehind="Logueo.aspx.cs" Inherits="Web.Logueo" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section>
         <div class="row g-0">
             <div class="col-lg-7 d-none d-lg-block">
@@ -48,10 +45,11 @@
                         </div>
                         <div class="mb-4">                            
                             <asp:Label ID="lblPassword" runat="server" Text="Contraseña" class="form-label font-weight-bold"></asp:Label>
-                            <asp:TextBox ID="exampleInputPassword1" runat="server" class="form-control bg-dark-x border-0 mb-2" Placeholder="Ingresa tu contraseña"></asp:TextBox>
+                            <asp:TextBox ID="txtPass" runat="server" class="form-control bg-dark-x border-0 mb-2" Placeholder="Ingresa tu contraseña"></asp:TextBox>
                             <a href="#" id="emailHelp" class="form-text text-muted text-decoration-none">¿Has olvidado tu contraseña?</a>
                         </div>
-                        <asp:Button ID="btnSubmit" runat="server" Text="Iniciar sesión" class="btn btn-primary w-100"/>
+                        <asp:Button ID="btInitSession" runat="server" Text="Iniciar sesión"
+                           OnClick="btInitSession_Click"  class="btn btn-primary w-100"/>
                     </div>
                     <!-- 
                 <p class="font-weight-bold text-center text-muted">O inicia sesión con</p>

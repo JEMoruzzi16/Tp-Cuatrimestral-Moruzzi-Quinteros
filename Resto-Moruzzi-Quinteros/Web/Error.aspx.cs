@@ -14,5 +14,10 @@ namespace Web
             if (Session["error"] != null)
                 lblMensaje.Text = Session["error"].ToString();
         }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Logueo.aspx");
+        }
     }
 }

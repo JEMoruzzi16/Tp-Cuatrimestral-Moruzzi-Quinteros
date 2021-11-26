@@ -32,7 +32,9 @@ CREATE TABLE DatosPersonales(
     Estado bit not NULL DEFAULT 1
 )
 CREATE TABLE Usuarios(
-    Usuario VARCHAR(25) PRIMARY KEY FOREIGN KEY REFERENCES DatosPersonales(Usuario),
+	Id int primary key identity(1,1),
+    Usuario VARCHAR(25) FOREIGN KEY REFERENCES DatosPersonales(Usuario),
     Contrasena VARCHAR(10) NOT NULL,
     Tipo TINYINT NOT NULL,
+	Estado bit default 1 not null
 )

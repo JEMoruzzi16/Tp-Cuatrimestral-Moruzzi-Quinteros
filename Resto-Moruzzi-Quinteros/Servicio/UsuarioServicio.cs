@@ -97,22 +97,24 @@ namespace Servicio
         }
 
 
-        public bool Loguear(Usuario usuario)
+        public int Loguear(Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT Usr.Usuario, Usr.Contrasena, Usr.Tipo, Usr.Estado FROM Usuarios as Usr where Usr.Usuario = @user AND Usr.Contrasena = @pass ");
-                datos.setearParametro("@User", usuario.NombreUsuario);
+                datos.setearConsulta("select Usr.Id, Usr.Tipo From Usuarios as Usr where Usr.Usuario = @user and Usr.Contrasena = @pass");
+                datos.setearParametro("@user", usuario.NombreUsuario);
                 datos.setearParametro("@pass", usuario.Contrasena);
 
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
+                    usuario.Id = (int)datos.Lector["Id"];
                     usuario.Tipo = (int)(datos.Lector["TipoUser"]) == 2 ? TipoUsuario.GERENTE : TipoUsuario.MESERO;
-                    return true;
+
+                    return ((int)usuario.Tipo);
                 }
-                return false;
+                return 0;
             }
             catch (Exception ex)
             {
