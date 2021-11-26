@@ -48,7 +48,7 @@ namespace Servicio
                     Usuario aux = new Usuario();
                     aux.NombreUsuario = datos.Lector["Usuario"].ToString();
                     aux.Contrasena = datos.Lector["Contrasena"].ToString();
-                    aux.Tipo = (TipoUsuario)datos.Lector["Tipo"];
+                    aux.Tipo = (int)datos.Lector["Tipo"];
                     aux.Estado = (bool)datos.Lector["Estado"];
                     
                     lista.Add(aux);
@@ -80,7 +80,7 @@ namespace Servicio
                 {
                     aux.NombreUsuario = (string)data.Lector["Usuario"];
                     aux.Contrasena = (string)data.Lector["Contrasena"];
-                    aux.Tipo = (TipoUsuario)data.Lector["Tipo"];
+                    aux.Tipo = (int)data.Lector["Tipo"];
                 }
 
                 return aux; 
@@ -97,12 +97,12 @@ namespace Servicio
         }
 
 
-        public int Loguear(Usuario usuario)
+        public Usuario Loguear(Usuario usuario)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("select Usr.Id, Usr.Tipo From Usuarios as Usr where Usr.Usuario = @user and Usr.Contrasena = @pass");
+                datos.setearConsulta("select us.Id, us.Usuario, us.Contrasena, us.Tipo, us.Estado from Usuarios as us where Us.Usuario = @user and Us.Contrasena = @pass");
                 datos.setearParametro("@user", usuario.NombreUsuario);
                 datos.setearParametro("@pass", usuario.Contrasena);
 
@@ -110,11 +110,22 @@ namespace Servicio
                 while (datos.Lector.Read())
                 {
                     usuario.Id = (int)datos.Lector["Id"];
-                    usuario.Tipo = (int)(datos.Lector["TipoUser"]) == 2 ? TipoUsuario.GERENTE : TipoUsuario.MESERO;
-
-                    return ((int)usuario.Tipo);
+                    usuario.NombreUsuario = (string)datos.Lector["Usuario"];
+                    usuario.Contrasena = (string)datos.Lector["Contrasena"];
+                    usuario.Estado = (bool)datos.Lector["Estado"];
+                    usuario.Tipo = (int)datos.Lector["Tipo"];
+                    /*
+                    if((TipoUsuario)datos.Lector["Tipo"] == TipoUsuario.MESERO)
+                    {DD
+                        usuario.Tipo = TipoUsuario.MESERO;
+                    }else
+                    {
+                        usuario.Tipo = TipoUsuario.GERENTE;
+                    }*/
+                    return usuario;
                 }
-                return 0;
+                usuario.Tipo = 0;
+                return usuario;
             }
             catch (Exception ex)
             {
@@ -139,7 +150,7 @@ namespace Servicio
                 if (datos.Lector.Read())
                 {
 
-                    user.Tipo = (int)(datos.Lector["TipoUser"]) == 2 ? TipoUsuario.GERENTE : TipoUsuario.MESERO;
+                    user.Tipo = (int)(datos.Lector["TipoUser"]) == 2 ? 2 : 1;
                 }
             }
             catch (Exception ex)

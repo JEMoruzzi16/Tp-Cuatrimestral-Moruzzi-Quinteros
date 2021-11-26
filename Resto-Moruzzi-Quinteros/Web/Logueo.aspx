@@ -45,7 +45,7 @@
                         </div>
                         <div class="mb-4">                            
                             <asp:Label ID="lblPassword" runat="server" Text="Contraseña" class="form-label font-weight-bold"></asp:Label>
-                            <asp:TextBox ID="txtPass" runat="server" class="form-control bg-dark-x border-0 mb-2" Placeholder="Ingresa tu contraseña"></asp:TextBox>
+                            <asp:TextBox ID="txtPass"  runat="server" class="form-control bg-dark-x border-0 mb-2" Placeholder="Ingrese su contraseña" TextMode="Password"></asp:TextBox>
                             <a href="#" id="emailHelp" class="form-text text-muted text-decoration-none">¿Has olvidado tu contraseña?</a>
                         </div>
                         <asp:Button ID="btInitSession" runat="server" Text="Iniciar sesión"

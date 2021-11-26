@@ -23,11 +23,11 @@ namespace Web
 
             try
             {
-                usuario = new Usuario(txtUsuario.Text,txtPass.Text,false);
-                if(usuarioServicio.Loguear(usuario)==1){
+                usuario = new Usuario(txtUsuario.Text,txtPass.Text);
+                if(usuarioServicio.Loguear(usuario).Tipo == 1){
                     Session.Add("usuario", usuario);
                     Response.Redirect("HomeMesero.aspx",false);
-                }else if(usuarioServicio.Loguear(usuario) == 2){
+                }else if(usuarioServicio.Loguear(usuario).Tipo == 2){
                     Session.Add("usuario", usuario);
                     Response.Redirect("HomeGerente.aspx",false);
                 }else{
@@ -40,6 +40,7 @@ namespace Web
             {
 
                 Session.Add("error", ex.ToString());
+                Response.Redirect("error.aspx",false);
             }
 
 

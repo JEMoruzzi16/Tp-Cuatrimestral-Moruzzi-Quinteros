@@ -28,7 +28,7 @@ namespace Web.ABM_aspx.Modificar
                 string nombreUsuario = aux.NombreUsuario;
                 txtUsuario.Text = nombreUsuario;
                 txtContrasena.Text = aux.Contrasena;
-                TipoUsuario tipe = aux.Tipo;
+                int tipe = aux.Tipo;
                 string tipo="";
                 
                 //switch (tipe.)

@@ -8,6 +8,7 @@ namespace Dominio
 {
     public enum TipoUsuario
     {
+        ERROR=0,
         MESERO=1,
         GERENTE=2
     }
@@ -16,16 +17,15 @@ namespace Dominio
         public int Id { get; set; }
         public String NombreUsuario { get; set; }
         public String Contrasena { get; set; }
-        public TipoUsuario Tipo { get; set; }
+        public int Tipo { get; set; }
         public Boolean Estado { get; set; }
 
         public Usuario() { } 
 
-        public Usuario(string user, string pass, bool admin)
+        public Usuario(string user, string pass)
         {
             NombreUsuario = user;
             Contrasena = pass;
-            Tipo = admin ? TipoUsuario.GERENTE : TipoUsuario.MESERO;
         }
 
     }
