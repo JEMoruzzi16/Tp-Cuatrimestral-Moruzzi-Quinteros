@@ -56,7 +56,7 @@ namespace Web.ABM_aspx.Modificar
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../Home.aspx");
+            Response.Redirect("../../HomeGerente.aspx");
         }
     }
 }

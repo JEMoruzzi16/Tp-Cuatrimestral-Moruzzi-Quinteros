@@ -22,7 +22,7 @@ namespace Web.ABM_aspx.Listar
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../Home.aspx");
+            Response.Redirect("../../HomeGerente.aspx");
         }
 
         protected void btnNuevoTipo_Click(object sender, EventArgs e)

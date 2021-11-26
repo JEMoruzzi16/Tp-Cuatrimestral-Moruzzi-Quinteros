@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Login.Master" AutoEventWireup="true" CodeBehind="Logueo.aspx.cs" Inherits="Web.Logueo" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Pages/Login.Master" AutoEventWireup="true" CodeBehind="Logueo.aspx.cs" Inherits="Web.Logueo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 </asp:Content>
@@ -65,6 +65,6 @@
                 </div>-->
                 </div>
             </div>
-    </section>
+         </div>
     </section>
 </asp:Content>

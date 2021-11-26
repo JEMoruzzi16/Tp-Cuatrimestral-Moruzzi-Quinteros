@@ -45,7 +45,7 @@ namespace Web
         }
         protected void btnCancealar_Click2(object sender, EventArgs e)
         {
-            Response.Redirect("../../Home.Aspx");
+            Response.Redirect("../../HomeGerente.Aspx");
 
         }
     }

@@ -7,21 +7,20 @@ using System.Web.UI.WebControls;
 using Dominio;
 using Servicio;
 
-namespace Web
+namespace Web.ABM_aspx.Listar
 {
-    public partial class EliminarProducto : System.Web.UI.Page
+    public partial class ListarProductoMesero : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                ProductoServicio productoServicio = new ProductoServicio();
                 TipoDeProductoServicio tipoServicio = new TipoDeProductoServicio();
+                ProductoServicio productoServicio = new ProductoServicio();
                 if (!IsPostBack)
                 {
                     List<Producto> listaProducto = productoServicio.listar();
                     Session["listaProducto"] = listaProducto;
-
                     List<TipoDeProducto> listaTipoProducto = tipoServicio.listar();
 
                     ddlTipoProducto.DataSource = listaTipoProducto;
@@ -32,44 +31,43 @@ namespace Web
             }
             catch (Exception ex)
             {
-
-                throw;
-            }
-            
-        }
-        protected void ddlTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int id = int.Parse(ddlTipoProducto.SelectedItem.Value);
-            ddlProducto.DataSource = ((List<Producto>)Session["listaProducto"]).FindAll(x => x.IdTipoProducto == id);
-            ddlProducto.DataTextField = "DescripcionPlato";
-            ddlProducto.DataValueField = "Codigo";
-            ddlProducto.DataBind();
-        }
-
-        protected void btnAceptar_Click(object sender, EventArgs e)
-        {
-            ProductoServicio productoServicio = new ProductoServicio();
-            Producto eliminado = new Producto();
-
-            try
-            {
-                int id = int.Parse(ddlTipoProducto.SelectedItem.Value);
-               // eliminado = ((List<Producto>)Session["listaProducto"]).FindAll(x => x.Codigo == id);
-
-                productoServicio.Eliminar(eliminado.Codigo);
-            }
-            catch (Exception ex)
-            {
-
                 throw ex;
             }
 
         }
-
-        protected void btnCancelar_Click(object sender, EventArgs e)
+        protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../HomeGerente.aspx");
+            Response.Redirect("../../HomeMesero.aspx");
         }
 
+        protected void ddlTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = int.Parse(ddlTipoProducto.SelectedItem.Value);
+            dgvProductos.DataSource = ((List<Producto>)Session["listaProducto"]).FindAll(x => x.IdTipoProducto == id);
+            dgvProductos.DataBind();
+        }
+
+        protected void dgvProductos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[0].Visible = false;
+                e.Row.Cells[1].Visible = false;
+                e.Row.Cells[4].Visible = false;
+            }
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Cells[0].Visible = false;
+                e.Row.Cells[1].Visible = false;
+                e.Row.Cells[4].Visible = false;
+            }
+
+        }
+
+        protected void btnNuevoProducto_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("../Agregar/AgregarProducto.aspx");
+        }
     }
 }

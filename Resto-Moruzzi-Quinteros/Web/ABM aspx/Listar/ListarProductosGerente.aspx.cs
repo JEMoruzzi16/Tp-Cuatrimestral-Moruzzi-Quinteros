@@ -39,7 +39,7 @@ namespace Web
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../Home.aspx");
+            Response.Redirect("../../HomeGerente.aspx");
         }
 
         protected void ddlTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
