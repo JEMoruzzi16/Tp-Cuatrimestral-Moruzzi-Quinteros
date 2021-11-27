@@ -27,7 +27,7 @@ namespace Web.ABM_aspx.Listar
 
         protected void btnNuevoTipo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Agregar/AgregarTipoProducto.aspx");
+            Response.Redirect("../Agregar/AgregarTipoProducto.aspx", false);
         }
     }
 }

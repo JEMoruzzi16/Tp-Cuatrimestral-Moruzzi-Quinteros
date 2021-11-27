@@ -44,7 +44,7 @@ namespace Web
         }
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../HomeGerente.aspx");
+            Response.Redirect("../../HomeGerente.aspx", false);
         }
         protected void btnAceptar_Click(object sender, EventArgs e)
         {

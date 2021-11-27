@@ -37,7 +37,7 @@ namespace Web.ABM_aspx.Listar
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../HomeMesero.aspx");
+            Response.Redirect("../../HomeMesero.aspx", false);
         }
 
         protected void ddlTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
@@ -67,7 +67,7 @@ namespace Web.ABM_aspx.Listar
 
         protected void btnNuevoProducto_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Agregar/AgregarProducto.aspx");
+            Response.Redirect("../Agregar/AgregarProducto.aspx", false);
         }
     }
 }

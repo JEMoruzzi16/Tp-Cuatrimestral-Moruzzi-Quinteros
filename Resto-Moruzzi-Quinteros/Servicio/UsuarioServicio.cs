@@ -112,8 +112,8 @@ namespace Servicio
                     usuario.Id = (int)datos.Lector["Id"];
                     usuario.NombreUsuario = (string)datos.Lector["Usuario"];
                     usuario.Contrasena = (string)datos.Lector["Contrasena"];
-                    usuario.Estado = (bool)datos.Lector["Estado"];
                     usuario.Tipo = (int)datos.Lector["Tipo"];
+                    usuario.Estado = (bool)datos.Lector["Estado"];
                     /*
                     if((TipoUsuario)datos.Lector["Tipo"] == TipoUsuario.MESERO)
                     {DD

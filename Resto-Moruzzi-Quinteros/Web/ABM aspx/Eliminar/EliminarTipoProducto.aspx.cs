@@ -47,7 +47,7 @@ namespace Web.ABM_aspx.Eliminar
 
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../HomeGerente.aspx");
+            Response.Redirect("../../HomeGerente.aspx",false);
         }
     }
 }

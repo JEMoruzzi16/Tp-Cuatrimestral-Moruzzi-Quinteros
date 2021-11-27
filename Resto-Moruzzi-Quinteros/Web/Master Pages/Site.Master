@@ -89,6 +89,10 @@
                   </ul>
                 </li>
 
+                  <li class="nav-item dropdown">
+                    <asp:Button Text="Cerrar sesión" ID="btnLogOut" OnClick="btnLogOut_Click" runat="server" class="btn-secondary"/>
+                  </li>
+
 
               </ul>
               <%--<form class="d-flex">

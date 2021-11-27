@@ -39,7 +39,7 @@ namespace Web
 
         protected void btnVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../../HomeGerente.aspx");
+            Response.Redirect("../../HomeGerente.aspx", false);
         }
 
         protected void ddlTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
@@ -69,7 +69,7 @@ namespace Web
 
         protected void btnNuevoProducto_Click(object sender, EventArgs e)
         {
-            Response.Redirect("../Agregar/AgregarProducto.aspx");
+            Response.Redirect("../Agregar/AgregarProducto.aspx", false);
         }
     }
 }

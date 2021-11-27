@@ -10,7 +10,7 @@
     <br />
     <br />
     <div class="mb-5" style="padding-left:550px">
-        <asp:Button Text="Volver" ID="btnCancelar" class="btn btn-primary w-100"
+        <asp:Button Text="Volver" ID="btnCancelar" class="btn btn-primary w-100" 
           OnClick="btnCancelar_Click"   runat="server" />
     </div>
 </asp:Content>

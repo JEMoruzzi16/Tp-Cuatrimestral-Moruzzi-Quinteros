@@ -41,11 +41,11 @@ namespace Web
 
             datosPersonalesServicio.agregar(newData);
             usuarioServicio.agregar(newUser);
-            Response.Redirect("GerentePanel.aspx");
+            Response.Redirect("GerentePanel.aspx",false);
         }
         protected void btnCancealar_Click2(object sender, EventArgs e)
         {
-            Response.Redirect("../../HomeGerente.Aspx");
+            Response.Redirect("../../HomeGerente.Aspx",false);
 
         }
     }
