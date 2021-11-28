@@ -32,7 +32,9 @@
                     </a>
                 </div>
             </div>
-            <div class="col-lg-5 bg-dark d-flex flex-column align-items-end min-vh-100">
+            <!-- ACA COMIENZA LA ZONA DERECHA -->
+
+            <div class="col-lg-5 bg-dark  flex-column align-items-start min-vh-100">
                 <div class="px-lg-5 pt-lg-4 pb-lg-3 p-4 mb-auto w-100">
                     <img src="img/Logo.svg.png" class="img-fluid" />
                 </div>
@@ -50,19 +52,9 @@
                         </div>
                         <asp:Button ID="btInitSession" runat="server" Text="Iniciar sesión"
                            OnClick="btInitSession_Click"  class="btn btn-primary w-100"/>
-                    </div>
-                    <!-- 
-                <p class="font-weight-bold text-center text-muted">O inicia sesión con</p>
-                <div class="d-flex justify-content-around">
-                    <button type="button" class="btn btn-outline-light flex-grow-1 mr-2"><i class="fab fa-google lead mr-2"></i> Google</button>
-                    <button type="button" class="btn btn-outline-light flex-grow-1 ml-2"><i class="fab fa-facebook-f lead mr-2"></i> Facebook</button>
-                </div>
-                </div>
-                <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
-                    <p class="d-inline-block mb-0">¿Todavia no tienes una cuenta?</p> <a href="" class="text-light font-weight-bold text-decoration-none">Crea una ahora</a>
-                </div>-->
-                </div>
+                    </div>                
+                </div>                
             </div>
-         </div>
+        </div>
     </section>
 </asp:Content>

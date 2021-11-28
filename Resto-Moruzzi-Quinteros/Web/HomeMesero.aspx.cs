@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Dominio;
 
 namespace Web
 {
@@ -16,6 +17,7 @@ namespace Web
                 Session.Add("error", "Debes loguearte para ingresar");
                 Response.Redirect("Error.aspx", false);
             }
+
         }
     }
 }

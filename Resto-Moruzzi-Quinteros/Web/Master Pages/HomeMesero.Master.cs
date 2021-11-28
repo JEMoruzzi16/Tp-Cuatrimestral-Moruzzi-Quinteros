@@ -17,6 +17,7 @@ namespace Web
         protected void btnLoOut_Click(object sender, EventArgs e)
         {
             Session.Remove("usuario");
+            Response.Redirect("./Logueo.aspx", false);
         }
     }
 }
