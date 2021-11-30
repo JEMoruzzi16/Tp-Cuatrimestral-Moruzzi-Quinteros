@@ -16,6 +16,10 @@ namespace Web
             {
                 Session.Add("error", "Debes loguearte para ingresar");
                 Response.Redirect("Error.aspx", false);
+
+
+
+
             }
 
         }

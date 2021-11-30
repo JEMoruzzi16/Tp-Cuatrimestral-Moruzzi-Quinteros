@@ -11,7 +11,6 @@ namespace Dominio
         public int NumeroPedido { get; set; }
         public string UsuarioMesero { get; set; }
         public DateTime Fecha { get; set; }
-        public List<Producto> PlatosElegidos { get; set; }
         public Decimal Monto { get; set; }
         public int IdMetodoPago { get; set; }
         public Boolean Estado { get; set; }

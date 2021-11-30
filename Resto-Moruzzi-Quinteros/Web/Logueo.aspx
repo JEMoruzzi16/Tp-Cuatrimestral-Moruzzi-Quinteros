@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Pages/Login.Master" AutoEventWireup="true" CodeBehind="Logueo.aspx.cs" Inherits="Web.Logueo" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    
+   
+    
     <section>
         <div class="row g-0">
             <div class="col-lg-7 d-none d-lg-block">
@@ -11,12 +14,14 @@
                     <div class="carousel-inner">
                         <div class="carousel-item img-1 min-vh-100 active">
                             <div class="carousel-caption d-none d-md-block">
+                                <img style="width:100%" src="img-1.jpg" alt="Alternate  " />
                                 <h5 class="font-weight-bold">La app más potente del mercado</h5>
                                 <a class="text-muted text-decoration-none">Tu resto al siguiente nivel</a>
                             </div>
                         </div>
                         <div class="carousel-item img-2 min-vh-100">
                             <div class="carousel-caption d-none d-md-block">
+                                  <img style="height:550px" src="img-2.jpg" alt="Alternate  " />
                                 <h5 class="font-weight-bold">Descubre la nueva generación de Tecnología del Managment</h5>
                                 <a class="text-muted text-decoration-none">Tu resto al siguiente nivel</a>
                             </div>

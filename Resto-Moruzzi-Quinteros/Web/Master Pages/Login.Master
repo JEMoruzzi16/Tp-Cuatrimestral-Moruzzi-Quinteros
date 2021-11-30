@@ -33,11 +33,16 @@
                         <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                         <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                         <asp:ScriptReference Name="WebFormsBundle" />
+                        <asp:ScriptReference Name="Popper.min.js" Assembly="System.Web" Path="~/Scripts/WebForms/Popper.min.js" />
+                        <asp:ScriptReference Name="Bootstrap.min.js" Assembly="System.Web" Path="~/Scripts/WebForms/Bootstrap.min.js"/>    
+
+
 
                         <%--Site Scripts--%>
 
     
                     </Scripts>
+
                 </asp:ScriptManager>
             </asp:ContentPlaceHolder>
     </form>

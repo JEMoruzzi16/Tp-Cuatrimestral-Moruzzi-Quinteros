@@ -15,4 +15,4 @@ namespace Dominio
         public int Comensales { get; set; }
 
     }
-}
+}   

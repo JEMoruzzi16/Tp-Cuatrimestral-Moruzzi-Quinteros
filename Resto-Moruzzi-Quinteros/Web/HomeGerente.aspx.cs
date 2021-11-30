@@ -17,11 +17,11 @@ namespace Web
                 Session.Add("error","Debes loguearte para ingresar");
                 Response.Redirect("Error.aspx");
             }
-            //if (((Usuario)Session["usuario"]).Id != 2)
-            //{
-            //    Session.Add("error", "Este es el menu de gerentes, no tienes autorizacion para verlo.");
-            //    Response.Redirect("Error.aspx", false);
-            //}
+            if (((Usuario)Session["usuario"]).Id != 2)
+            {
+                Session.Add("error", "Este es el menu de gerentes, no tienes autorizacion para verlo.");
+                Response.Redirect("Error.aspx", false);
+            }
         }
     }
 }

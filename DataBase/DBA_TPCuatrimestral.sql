@@ -31,10 +31,31 @@ CREATE TABLE DatosPersonales(
     FechaIngreso DATETIME NOT NULL,
     Estado bit not NULL DEFAULT 1
 )
+go
 CREATE TABLE Usuarios(
 	Id int primary key identity(1,1),
     Usuario VARCHAR(25) FOREIGN KEY REFERENCES DatosPersonales(Usuario),
     Contrasena VARCHAR(10) NOT NULL,
     Tipo TINYINT NOT NULL,
 	Estado bit default 1 not null
+)
+GO
+create table Pedido(
+    Nro int PRIMARY KEY IDENTITY(1,1) not null,
+    IdMesero int FOREIGN KEY REFERENCES Usuarios(Id) not null,
+    Fecha DATE not null,
+    Monto Decimal (10,2) not null,
+    IdMetodoPago char FOREIGN KEY REFERENCES MetodoPago(Id) not null,
+)
+GO
+create table Pedido_Producto(
+    NroPedido int FOREIGN KEY REFERENCES Pedido(Nro) not null,
+    CodigoProducto int FOREIGN KEY REFERENCES Producto(Codigo) not null,
+)
+go
+--Mesa funciona mas o menos--
+Create table Mesa(
+    Nro int Primary key not null IDENTITY(1,1),
+    NroPedido int FOREIGN key references Pedido(Nro)    null,
+    Estado bit DEFAULT 0,
 )
