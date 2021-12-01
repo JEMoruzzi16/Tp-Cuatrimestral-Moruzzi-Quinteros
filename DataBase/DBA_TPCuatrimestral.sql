@@ -43,19 +43,21 @@ GO
 create table Pedido(
     Nro int PRIMARY KEY IDENTITY(1,1) not null,
     IdMesero int FOREIGN KEY REFERENCES Usuarios(Id) not null,
-    Fecha DATE not null,
-    Monto Decimal (10,2) not null,
+    Fecha DATETIME not null,
+    Monto Decimal (10,2) NOT null,
     IdMetodoPago char FOREIGN KEY REFERENCES MetodoPago(Id) not null,
 )
 GO
 create table Pedido_Producto(
-    NroPedido int FOREIGN KEY REFERENCES Pedido(Nro) not null,
+    NroPedido int FOREIGN KEY REFERENCES Pedido(Nro) null,
     CodigoProducto int FOREIGN KEY REFERENCES Producto(Codigo) not null,
+    NroMesa int FOREIGN key REFERENCES Mesa(Nro),
+    CodigoTipo int FOREIGN KEY REFERENCES TipoDeProducto(ID)
 )
 go
---Mesa funciona mas o menos--
 Create table Mesa(
-    Nro int Primary key not null IDENTITY(1,1),
-    NroPedido int FOREIGN key references Pedido(Nro)    null,
+    Nro int Primary key not null,
     Estado bit DEFAULT 0,
+    Capacidad int not null,
+
 )

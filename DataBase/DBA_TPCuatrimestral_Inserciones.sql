@@ -81,9 +81,11 @@ INSERT INTO Producto(IdTipoProducto,Precio,Stock,Estado,DescripcionPlato) VALUES
 INSERT INTO MetodoPago(ID,Descripcion) VALUES('D','Debito');
 INSERT INTO MetodoPago(ID,Descripcion) VALUES('T','Tarjeta');
 INSERT INTO MetodoPago(ID,Descripcion) VALUES('E','Efectivo');
-
-
-
+--MESAS--
+INSERT INTO Mesa(Nro,Capacidad) VALUES(1,4)
+INSERT INTO Mesa(Nro,Capacidad) VALUES(2,4)
+INSERT INTO Mesa(Nro,Capacidad) VALUES(3,2)
+INSERT INTO Mesa(Nro,Capacidad) VALUES(4,2)
 
 
 

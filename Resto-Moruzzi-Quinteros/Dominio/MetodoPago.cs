@@ -8,7 +8,7 @@ namespace Dominio
 {
     public class MetodoPago
     {
-        public int Id { get; set; }
+        public char Id { get; set; }
         public String Descripcion { get; set; }
         public Boolean Estado { get; set; }
 

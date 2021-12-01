@@ -72,12 +72,13 @@ namespace Servicio
             Usuario aux= new Usuario();
             try
             {
-                data.setearConsulta("SELECT us.Usuario, us.Contrasena, us.Tipo, us.Estado FROM Usuarios as us where us.Usuario = @Usuario");
+                data.setearConsulta("SELECT us.Id, us.Usuario, us.Contrasena, us.Tipo, us.Estado FROM Usuarios as us where us.Usuario = @Usuario");
                 data.setearParametro("@Usuario", objetivo);
                 data.ejecutarLectura();
 
                 while (data.Lector.Read())
                 {
+                    aux.Id = (int)data.Lector["Id"];
                     aux.NombreUsuario = (string)data.Lector["Usuario"];
                     aux.Contrasena = (string)data.Lector["Contrasena"];
                     aux.Tipo = (int)data.Lector["Tipo"];
