@@ -16,7 +16,7 @@ namespace Web
             if (Session["usuario"] == null)
             {
                 Session.Add("error", "Debes loguearte para ingresar");
-                Response.Redirect("Error.aspx", false);
+                Response.Redirect("Error.aspx");
 
             }
 

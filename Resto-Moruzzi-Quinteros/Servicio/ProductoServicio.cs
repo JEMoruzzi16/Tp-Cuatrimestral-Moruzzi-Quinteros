@@ -114,5 +114,37 @@ namespace Servicio
             }
 
         }
+        public Producto buscarPorCodigo(int codigo, int codigoTipo)
+        {
+            Producto aux = new Producto();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.setearConsulta("select IdTipoProducto,Precio,Stock,Estado,DescripcionPlato from producto where Codigo = @codigo");
+                datos.setearParametro("@codigo", codigo);
+                //datos.setearParametro("@IdTipo", codigoTipo);
+                datos.ejecutarLectura();
+
+                while(datos.Lector.Read())
+                {
+                    aux.Codigo = codigo;
+                    aux.IdTipoProducto = (int)datos.Lector["IdTipoProducto"];
+                    aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.Stock = (int)datos.Lector["Stock"];
+                    aux.Estado = (Boolean)datos.Lector["Estado"];
+                    aux.DescripcionPlato = (string)datos.Lector["DescripcionPlato"];
+                }
+                return aux;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
     }
 }

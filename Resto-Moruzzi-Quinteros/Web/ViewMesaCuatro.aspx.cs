@@ -11,12 +11,17 @@ namespace Web
     public partial class ViewMesaCuatro : System.Web.UI.Page
     {
         private List<Pedido_Producto> listaPedido_Producto;
+        private List<Producto> listaProductos = new List<Producto>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            Pedido_ProductoServicio Pedido_ProductoServicio = new Pedido_ProductoServicio();
+            /*ProductoServicio productoServicioDgv = new ProductoServicio();
+            listaProductos = productoServicioDgv.listar();*/
+            dgvProductos.DataBind();
+
+            /*Pedido_ProductoServicio Pedido_ProductoServicio = new Pedido_ProductoServicio();
             listaPedido_Producto = Pedido_ProductoServicio.listar();
             dgvProductos.DataSource = listaPedido_Producto;
-            dgvProductos.DataBind();
+            dgvProductos.DataBind();*/
             try
             {
 
@@ -62,9 +67,17 @@ namespace Web
                 Pedido_Producto nuevo = new Pedido_Producto();
                 Pedido_ProductoServicio servicio = new Pedido_ProductoServicio();
                 int nroPedido=(int)Session["mesaCuatro"];
+                //ddlProducto.DataValueField.
                 int codigoPro = int.Parse(ddlProducto.SelectedItem.Value);
                 int codigoTipoProducto = int.Parse(ddlTipoProducto.SelectedItem.Value);
                 servicio.agregar(nroPedido,codigoPro,codigoTipoProducto, 4);
+                Producto nuevoProducto = (Producto)ddlProducto.DataSource;
+
+                /*ProductoServicio servicioProducto = new ProductoServicio();
+                Producto nuevoProducto = servicioProducto.buscarPorCodigo(codigoPro,codigoTipoProducto);*/
+                int id = int.Parse(ddlTipoProducto.SelectedItem.Value);
+                ddlProducto.DataSource = ((List<Producto>)Session["listaProducto"]).FindAll(x => x.IdTipoProducto == id);
+                //listaProductos.Add(nuevoProducto);
             }
             catch (Exception ex)
             {
