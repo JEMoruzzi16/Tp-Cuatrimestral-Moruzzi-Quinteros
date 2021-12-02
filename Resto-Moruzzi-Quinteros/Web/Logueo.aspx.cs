@@ -18,12 +18,12 @@ namespace Web
 
         protected void btInitSession_Click(object sender, EventArgs e)
         {
-            Usuario usuario;
+            
             UsuarioServicio usuarioServicio = new UsuarioServicio();
 
             try
             {
-                usuario = new Usuario(txtUsuario.Text,txtPass.Text);
+                Usuario usuario = new Usuario(txtUsuario.Text,txtPass.Text);
                 if(usuarioServicio.Loguear(usuario).Tipo == 1){
                     Session.Add("usuario", usuario);
                     Response.Redirect("HomeMesero.aspx",false);

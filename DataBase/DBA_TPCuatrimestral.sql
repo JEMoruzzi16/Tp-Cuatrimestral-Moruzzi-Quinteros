@@ -48,16 +48,15 @@ create table Pedido(
     IdMetodoPago char FOREIGN KEY REFERENCES MetodoPago(Id) not null,
 )
 GO
-create table Pedido_Producto(
-    NroPedido int FOREIGN KEY REFERENCES Pedido(Nro) null,
-    CodigoProducto int FOREIGN KEY REFERENCES Producto(Codigo) not null,
-    NroMesa int FOREIGN key REFERENCES Mesa(Nro),
-    CodigoTipo int FOREIGN KEY REFERENCES TipoDeProducto(ID)
-)
-go
 Create table Mesa(
     Nro int Primary key not null,
     Estado bit DEFAULT 0,
     Capacidad int not null,
 
+)
+go
+create table Pedido_Producto(
+    NroPedido int FOREIGN KEY REFERENCES Pedido(Nro) null,
+    CodigoProducto int FOREIGN KEY REFERENCES Producto(Codigo) not null,
+    NroMesa int FOREIGN key REFERENCES Mesa(Nro)
 )

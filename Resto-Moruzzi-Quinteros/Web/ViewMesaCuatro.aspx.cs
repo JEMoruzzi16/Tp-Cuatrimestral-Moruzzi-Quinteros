@@ -10,7 +10,6 @@ namespace Web
 {
     public partial class ViewMesaCuatro : System.Web.UI.Page
     {
-        private List<Pedido_Producto> listaPedido_Producto;
         private List<Producto> listaProductos = new List<Producto>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -56,8 +55,7 @@ namespace Web
         protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect("HomeMesero.aspx", false);
-        }
-        
+        }       
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
@@ -66,18 +64,28 @@ namespace Web
             {
                 Pedido_Producto nuevo = new Pedido_Producto();
                 Pedido_ProductoServicio servicio = new Pedido_ProductoServicio();
-                int nroPedido=(int)Session["mesaCuatro"];
-                //ddlProducto.DataValueField.
-                int codigoPro = int.Parse(ddlProducto.SelectedItem.Value);
-                int codigoTipoProducto = int.Parse(ddlTipoProducto.SelectedItem.Value);
-                servicio.agregar(nroPedido,codigoPro,codigoTipoProducto, 4);
-                Producto nuevoProducto = (Producto)ddlProducto.DataSource;
+                ProductoServicio productoServicio = new ProductoServicio();
+                int nroPedido = (int)Session["mesaCuatro"];
+               
+
+                //OBTENGO LA DESCRIPCION DEL PRODUCTO
+                string descripcionPro = ddlProducto.SelectedItem.Text.ToString();
+                
+                //TRAIGO EL PRODUCTO EN UNA VARIABLE
+                Producto agregado = new Producto();
+                agregado = productoServicio.buscarXDescripcion(descripcionPro);
+
+                //AGREGO EL PRODUCTO A LA TABLA PEDIDOS EN BASE DE DATOS
+                servicio.agregar(nroPedido, agregado.Codigo, agregado.IdTipoProducto, 4);
+
+
+                //AGREGO A LA LISTA DE PRODUCTOS EL PRODUCTO ACTUAL
 
                 /*ProductoServicio servicioProducto = new ProductoServicio();
                 Producto nuevoProducto = servicioProducto.buscarPorCodigo(codigoPro,codigoTipoProducto);*/
-                int id = int.Parse(ddlTipoProducto.SelectedItem.Value);
-                ddlProducto.DataSource = ((List<Producto>)Session["listaProducto"]).FindAll(x => x.IdTipoProducto == id);
-                //listaProductos.Add(nuevoProducto);
+                //int id = int.Parse(ddlTipoProducto.SelectedItem.Value);
+                //ddlProducto.DataSource = ((List<Producto>)Session["listaProducto"]).FindAll(x => x.IdTipoProducto == id);
+                listaProductos.Add(agregado);
             }
             catch (Exception ex)
             {
