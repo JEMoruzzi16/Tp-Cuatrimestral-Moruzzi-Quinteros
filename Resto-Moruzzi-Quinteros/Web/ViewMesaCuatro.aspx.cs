@@ -15,6 +15,7 @@ namespace Web
         {
             /*ProductoServicio productoServicioDgv = new ProductoServicio();
             listaProductos = productoServicioDgv.listar();*/
+            dgvProductos.DataSource = listaProductos;
             dgvProductos.DataBind();
 
             /*Pedido_ProductoServicio Pedido_ProductoServicio = new Pedido_ProductoServicio();
@@ -28,6 +29,7 @@ namespace Web
                 ProductoServicio productoServicio = new ProductoServicio();
                 if (!IsPostBack)
                 {
+                    
                     List<Producto> listaProducto = productoServicio.listar();
                     Session["listaProducto"] = listaProducto;
                     List<TipoDeProducto> listaTipoProducto = tipoServicio.listar();
@@ -36,6 +38,8 @@ namespace Web
                     ddlTipoProducto.DataTextField = "Descripcion";
                     ddlTipoProducto.DataValueField = "IdTipoProducto";
                     ddlTipoProducto.DataBind();
+                    dgvProductos.DataSource = listaProductos;
+                    dgvProductos.DataBind();
                 }
             }
             catch (Exception ex)
@@ -51,6 +55,8 @@ namespace Web
             ddlProducto.DataTextField = "DescripcionPlato";
             ddlProducto.DataValueField = "IdTipoProducto";
             ddlProducto.DataBind();
+            dgvProductos.DataSource = listaProductos;
+            dgvProductos.DataBind();
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
@@ -85,7 +91,11 @@ namespace Web
                 Producto nuevoProducto = servicioProducto.buscarPorCodigo(codigoPro,codigoTipoProducto);*/
                 //int id = int.Parse(ddlTipoProducto.SelectedItem.Value);
                 //ddlProducto.DataSource = ((List<Producto>)Session["listaProducto"]).FindAll(x => x.IdTipoProducto == id);
+            
                 listaProductos.Add(agregado);
+                dgvProductos.DataSource = listaProductos;
+                dgvProductos.DataBind();
+
             }
             catch (Exception ex)
             {
