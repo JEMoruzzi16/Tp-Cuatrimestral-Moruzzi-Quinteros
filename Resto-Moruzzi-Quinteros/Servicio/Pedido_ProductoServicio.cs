@@ -9,15 +9,14 @@ namespace Servicio
 {
     public class Pedido_ProductoServicio
     {
-        public void agregar(int numeroPedido, int codigoProducto,int codigoTipoProducto, int nroMesa)
+        public void agregar(int numeroPedido, int codigoProducto, int nroMesa)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("insert into Pedido_Producto(NroPedido,CodigoProducto,CodigoTipo,NroMesa) values(@Pedido,@Producto,@Tipo,@Mesa)");
+                datos.setearConsulta("insert into Pedido_Producto(NroPedido,CodigoProducto,NroMesa) values(@Pedido,@Producto,@Mesa)");
                 datos.setearParametro("@Pedido", numeroPedido);
                 datos.setearParametro("@Producto", codigoProducto);
-                datos.setearParametro("@Tipo",codigoTipoProducto);
                 datos.setearParametro("@Mesa",nroMesa);
                 datos.ejecutarAccion();
 

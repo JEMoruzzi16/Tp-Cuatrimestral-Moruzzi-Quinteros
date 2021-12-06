@@ -10,26 +10,23 @@ namespace Web
 {
     public partial class ViewMesaCuatro : System.Web.UI.Page
     {
+
         private List<Producto> listaProductos = new List<Producto>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*ProductoServicio productoServicioDgv = new ProductoServicio();
-            listaProductos = productoServicioDgv.listar();*/
             dgvProductos.DataSource = listaProductos;
             dgvProductos.DataBind();
 
-            /*Pedido_ProductoServicio Pedido_ProductoServicio = new Pedido_ProductoServicio();
-            listaPedido_Producto = Pedido_ProductoServicio.listar();
-            dgvProductos.DataSource = listaPedido_Producto;
-            dgvProductos.DataBind();*/
             try
             {
 
                 TipoDeProductoServicio tipoServicio = new TipoDeProductoServicio();
                 ProductoServicio productoServicio = new ProductoServicio();
+                Pedido_ProductoServicio servicio = new Pedido_ProductoServicio();
                 if (!IsPostBack)
                 {
-                    
+                    productoServicio.listar
                     List<Producto> listaProducto = productoServicio.listar();
                     Session["listaProducto"] = listaProducto;
                     List<TipoDeProducto> listaTipoProducto = tipoServicio.listar();
@@ -38,6 +35,11 @@ namespace Web
                     ddlTipoProducto.DataTextField = "Descripcion";
                     ddlTipoProducto.DataValueField = "IdTipoProducto";
                     ddlTipoProducto.DataBind();
+                    dgvProductos.DataSource = listaProductos;
+                    dgvProductos.DataBind();
+                }
+                else if (IsPostBack) {
+
                     dgvProductos.DataSource = listaProductos;
                     dgvProductos.DataBind();
                 }
@@ -82,20 +84,14 @@ namespace Web
                 agregado = productoServicio.buscarXDescripcion(descripcionPro);
 
                 //AGREGO EL PRODUCTO A LA TABLA PEDIDOS EN BASE DE DATOS
-                servicio.agregar(nroPedido, agregado.Codigo, agregado.IdTipoProducto, 4);
+                servicio.agregar(nroPedido, agregado.Codigo, 4);
 
-
-                //AGREGO A LA LISTA DE PRODUCTOS EL PRODUCTO ACTUAL
-
-                /*ProductoServicio servicioProducto = new ProductoServicio();
-                Producto nuevoProducto = servicioProducto.buscarPorCodigo(codigoPro,codigoTipoProducto);*/
-                //int id = int.Parse(ddlTipoProducto.SelectedItem.Value);
-                //ddlProducto.DataSource = ((List<Producto>)Session["listaProducto"]).FindAll(x => x.IdTipoProducto == id);
-            
+                //AGREGO A LA LISTA DE PRODUCTOS EL PRODUCTO ACTUAL y LA CARGO A LA DGV                            
                 listaProductos.Add(agregado);
                 dgvProductos.DataSource = listaProductos;
                 dgvProductos.DataBind();
 
+                
             }
             catch (Exception ex)
             {
