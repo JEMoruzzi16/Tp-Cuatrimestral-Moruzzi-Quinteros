@@ -36,7 +36,7 @@ CREATE TABLE Usuarios(
 	Id int primary key identity(1,1),
     Usuario VARCHAR(25) FOREIGN KEY REFERENCES DatosPersonales(Usuario),
     Contrasena VARCHAR(10) NOT NULL,
-    Tipo TINYINT NOT NULL,
+    Tipo INT NOT NULL,
 	Estado bit default 1 not null
 )
 GO
@@ -46,6 +46,8 @@ create table Pedido(
     Fecha DATETIME not null,
     Monto Decimal (10,2) NOT null,
     IdMetodoPago char FOREIGN KEY REFERENCES MetodoPago(Id) not null,
+	NroMesa int FOREIGN key REFERENCES Mesa(Nro),
+	Estado bit DEFAULT 1 NOT NULL
 )
 GO
 Create table Mesa(
@@ -57,6 +59,5 @@ Create table Mesa(
 go
 create table Pedido_Producto(
     NroPedido int FOREIGN KEY REFERENCES Pedido(Nro) null,
-    CodigoProducto int FOREIGN KEY REFERENCES Producto(Codigo) not null,
-    NroMesa int FOREIGN key REFERENCES Mesa(Nro)
+    CodigoProducto int FOREIGN KEY REFERENCES Producto(Codigo) not null
 )

@@ -10,20 +10,22 @@ namespace Servicio
 {
     public class PedidoServicio
     {
-        public int nuevo(int id, char metodo)
+        public int nuevo(int id, char metodo,int nroMesa)
         {
             Pedido nuevoPedido = new Pedido();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("INSERT Into Pedido(IdMesero,Fecha,Monto,IdMetodoPago) VALUES (@IdMesero, @Fecha, @Monto,@IdMetodo)");
+                datos.setearConsulta("INSERT Into Pedido(IdMesero,Fecha,Monto,IdMetodoPago,NroMesa, Estado) VALUES (@IdMesero, @Fecha, @Monto,@IdMetodo,@NroMesa,@Estado)");
                 datos.setearParametro("@IdMesero", id);
                 datos.setearParametro("@Fecha", DateTime.Now);
                 datos.setearParametro("@Monto", "0");
                 datos.setearParametro("@IdMetodo", metodo);
+                datos.setearParametro("@NroMesa", nroMesa);
+                datos.setearParametro("@Estado", 1);
                 datos.ejecutarAccion();
 
-                int nroPedido = buscarUltimoNro();
+                int nroPedido = buscarUltimoNro(nroMesa);
                 return nroPedido;
             }
             catch (Exception ex)
@@ -36,13 +38,14 @@ namespace Servicio
                 datos.cerrarConexion();
             }
         }
-        public int buscarUltimoNro()
+        public int buscarUltimoNro(int nroMesa)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
                 int nroPedido=new int();
-                datos.setearConsulta("SELECT top 1 Nro from Pedido order by Nro DESC ");
+                datos.setearConsulta("SELECT top 1 Nro from Pedido WHERE NroMesa = @NroMesa order by Nro DESC  ");
+                datos.setearParametro("@NroMesa", nroMesa);
                 datos.ejecutarLectura();
                 while(datos.Lector.Read())
                 { 
@@ -59,6 +62,34 @@ namespace Servicio
             {
                 datos.cerrarConexion();
             }
+
+        }
+
+        public int BuscarNroPedido(int nroMesa)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                int nroPedido = new int();
+                datos.setearConsulta("select Nro from Pedido where NroMesa = @nroMesa and Estado = 1 ");
+                datos.setearParametro("@NroMesa", nroMesa);
+                datos.ejecutarLectura();
+                while (datos.Lector.Read())
+                {
+                    nroPedido = (int)datos.Lector["Nro"];
+                }
+                return nroPedido;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
 
         }
     }

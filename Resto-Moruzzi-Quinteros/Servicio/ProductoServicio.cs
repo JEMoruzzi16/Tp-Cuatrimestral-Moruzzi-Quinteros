@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
+using Servicio;
 
 namespace Servicio
 {
@@ -175,6 +176,51 @@ namespace Servicio
             {
                 datos.cerrarConexion();
             }
+        }
+
+        public List<Producto> listarProductosXPedido(List<Pedido_Producto> ListaPedidoProducto, int nroPedido)
+        {
+
+            List<Producto> lista = new List<Producto>();
+            AccesoDatos datos = new AccesoDatos();
+            AccesoDatos datos1 = new AccesoDatos();
+            try
+            {
+                datos1.setearConsulta("SELECT CodigoProducto FROM Pedido_Producto WHERE NroPedido = @Pedido");
+                datos1.setearParametro("@pedido",nroPedido );
+                datos1.ejecutarLectura();
+
+                while (datos1.Lector.Read())
+                {
+                    datos.setearConsulta("SELECT Pr.Codigo, Pr.IdTipoProducto,Pr.DescripcionPlato, Pr.Precio, Pr.Stock FROM Producto as Pr where Pr.Codigo=@codigo");
+                    datos.setearParametro("@codigo",(int)datos1.Lector["CodigoProducto"]);
+                    int aver= (int)datos1.Lector["CodigoProducto"];
+                    datos.ejecutarLectura();
+
+                    while (datos.Lector.Read())
+                    {
+                        Producto aux = new Producto();
+                        aux.Codigo = (int)datos.Lector["Codigo"];
+                        aux.IdTipoProducto = (int)datos.Lector["IdTipoProducto"];
+                        aux.Precio = (decimal)datos.Lector["Precio"];
+                        aux.Stock = (int)datos.Lector["Stock"];
+                        aux.DescripcionPlato = (string)datos.Lector["DescripcionPlato"];
+
+                        lista.Add(aux);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+                datos1.cerrarConexion();
+            }
+
         }
     }
 }

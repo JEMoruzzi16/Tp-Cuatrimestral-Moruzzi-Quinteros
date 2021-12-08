@@ -10,10 +10,7 @@ namespace Dominio
     {
         public int nroPedido{ get; set; }
         public int codigoProducto { get; set; }
-        public int codigoTipo { get; set; }
-        public int nroMesa { get; set; }
-        public string Descripcion{ get; set; }
-        public decimal Precio{ get; set; }
+ 
     }
 
 }

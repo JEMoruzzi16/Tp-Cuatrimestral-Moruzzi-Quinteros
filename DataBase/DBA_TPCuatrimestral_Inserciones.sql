@@ -86,7 +86,10 @@ INSERT INTO Mesa(Nro,Capacidad) VALUES(1,4)
 INSERT INTO Mesa(Nro,Capacidad) VALUES(2,4)
 INSERT INTO Mesa(Nro,Capacidad) VALUES(3,2)
 INSERT INTO Mesa(Nro,Capacidad) VALUES(4,2)
-
-
+--USUARIO--
+INSERT INTO DatosPersonales(Usuario,Nombre,Apellido,FechaNacimiento,FechaIngreso,Estado) VALUES ('admin','admin', 'admin',11/11/2011,GETDATE(),1); 
+INSERT INTO Usuarios(Usuario,Contrasena,Tipo,Estado) VALUES ('admin',123,2,1);
+INSERT INTO DatosPersonales(Usuario,Nombre,Apellido,FechaNacimiento,FechaIngreso,Estado) VALUES ('aaa','aaa', 'aaa',11/11/2011,GETDATE(),1); 
+INSERT INTO Usuarios(Usuario,Contrasena,Tipo,Estado) VALUES ('aaa',123,1,1);
 
 

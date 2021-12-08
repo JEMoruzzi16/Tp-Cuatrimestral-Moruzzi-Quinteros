@@ -104,7 +104,7 @@ namespace Web
             UsuarioServicio usuServicio = new UsuarioServicio();
             Usuario aux = usuServicio.buscarXUsuario(usuario);
             //Mediante el id, insertamos un nuevo pedido
-            pedidosServicio.nuevo(aux.Id, 'T');
+            pedidosServicio.nuevo(aux.Id, 'T',1);
 
 
         }
@@ -124,7 +124,7 @@ namespace Web
             UsuarioServicio usuServicio = new UsuarioServicio();
             Usuario aux = usuServicio.buscarXUsuario(usuario);
             //Mediante el id, insertamos un nuevo pedido
-            pedidosServicio.nuevo(aux.Id, 'T');
+            pedidosServicio.nuevo(aux.Id, 'T',2);
         }
 
         protected void btnAbrirTres_Click(object sender, EventArgs e)
@@ -142,7 +142,7 @@ namespace Web
             UsuarioServicio usuServicio = new UsuarioServicio();
             Usuario aux = usuServicio.buscarXUsuario(usuario);
             //Mediante el id, insertamos un nuevo pedido
-            pedidosServicio.nuevo(aux.Id, 'T');
+            pedidosServicio.nuevo(aux.Id, 'T',3);
         }
 
         protected void btnAbrirCuatro_Click(object sender, EventArgs e)
@@ -160,7 +160,7 @@ namespace Web
             UsuarioServicio usuServicio = new UsuarioServicio();
             Usuario aux = usuServicio.buscarXUsuario(usuario);
             //Mediante el id, insertamos un nuevo pedido y obtenemos el numero de pedido
-            int numeroPedido=pedidosServicio.nuevo(aux.Id, 'T');
+            int numeroPedido=pedidosServicio.nuevo(aux.Id, 'T',4);
             Session.Add("mesaCuatro",numeroPedido);
 
         }

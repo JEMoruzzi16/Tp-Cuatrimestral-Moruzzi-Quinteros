@@ -9,15 +9,14 @@ namespace Servicio
 {
     public class Pedido_ProductoServicio
     {
-        public void agregar(int numeroPedido, int codigoProducto, int nroMesa)
+        public void agregar(int numeroPedido, int codigoProducto)
         {
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("insert into Pedido_Producto(NroPedido,CodigoProducto,NroMesa) values(@Pedido,@Producto,@Mesa)");
+                datos.setearConsulta("insert into Pedido_Producto(NroPedido,CodigoProducto) values(@Pedido,@Producto)");
                 datos.setearParametro("@Pedido", numeroPedido);
                 datos.setearParametro("@Producto", codigoProducto);
-                datos.setearParametro("@Mesa",nroMesa);
                 datos.ejecutarAccion();
 
             }
@@ -33,19 +32,20 @@ namespace Servicio
 
         }
 
-        public List<Pedido_Producto> listar()
+        public List<Pedido_Producto> getLista(int numeroPedido)
         {
             AccesoDatos datos = new AccesoDatos();
             List<Pedido_Producto> lista = new List<Pedido_Producto>();
             try
             {
-                datos.setearConsulta("select Pro.DescripcionPlato, Pro.Precio from Pedido_Producto as PP INNER JOIN Producto as Pro on Pro.Codigo = PP.CodigoProducto INNER JOIN TipoDeProducto as TP on TP.Id=Pro.IdTipoProducto");
+                datos.setearConsulta("SELECT CodigoProducto from Pedido_Producto WHERE NroPedido = @nroPedido");
+                datos.setearParametro("@nroPedido", numeroPedido);
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     Pedido_Producto aux = new Pedido_Producto();
-                    aux.Descripcion = (string)datos.Lector["DescripcionPlato"];
-                    aux.Precio = (decimal)datos.Lector["Precio"];
+                    aux.nroPedido = numeroPedido;
+                    aux.codigoProducto = (int)datos.Lector["CodigoProducto"];
                     lista.Add(aux);
                 }
                 return lista;
@@ -60,5 +60,7 @@ namespace Servicio
                 datos.cerrarConexion();
             }
         }
+        
     }
+
 }

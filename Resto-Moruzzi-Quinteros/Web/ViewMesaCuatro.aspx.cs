@@ -23,10 +23,12 @@ namespace Web
 
                 TipoDeProductoServicio tipoServicio = new TipoDeProductoServicio();
                 ProductoServicio productoServicio = new ProductoServicio();
-                Pedido_ProductoServicio servicio = new Pedido_ProductoServicio();
+                Pedido_ProductoServicio PedProServicio = new Pedido_ProductoServicio();
+                PedidoServicio pedido = new PedidoServicio();
+
+                    int nroMesa = 4;
                 if (!IsPostBack)
                 {
-                    productoServicio.listar
                     List<Producto> listaProducto = productoServicio.listar();
                     Session["listaProducto"] = listaProducto;
                     List<TipoDeProducto> listaTipoProducto = tipoServicio.listar();
@@ -35,14 +37,22 @@ namespace Web
                     ddlTipoProducto.DataTextField = "Descripcion";
                     ddlTipoProducto.DataValueField = "IdTipoProducto";
                     ddlTipoProducto.DataBind();
+                    
+                    int nroPedido = pedido.BuscarNroPedido(nroMesa);
+                    List<Pedido_Producto> ListaPedidoProducto = PedProServicio.getLista(nroPedido);
+                    List<Producto> listaProductos = productoServicio.listarProductosXPedido(ListaPedidoProducto,nroPedido);
                     dgvProductos.DataSource = listaProductos;
                     dgvProductos.DataBind();
                 }
-                else if (IsPostBack) {
-
-                    dgvProductos.DataSource = listaProductos;
-                    dgvProductos.DataBind();
-                }
+                //else if(IsPostBack)
+                //{
+                //    int nroPedido = pedido.BuscarNroPedido(nroMesa);
+                //    List<Pedido_Producto> ListaPedidoProducto = PedProServicio.getLista(nroPedido);
+                //    List<Producto> listaProductos = productoServicio.listarProductosXPedido(ListaPedidoProducto, nroPedido);
+                //    dgvProductos.DataSource = listaProductos;
+                //    dgvProductos.DataBind();
+                //}
+                
             }
             catch (Exception ex)
             {
@@ -64,7 +74,6 @@ namespace Web
         {
             Response.Redirect("HomeMesero.aspx", false);
         }       
-
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
 
@@ -84,14 +93,22 @@ namespace Web
                 agregado = productoServicio.buscarXDescripcion(descripcionPro);
 
                 //AGREGO EL PRODUCTO A LA TABLA PEDIDOS EN BASE DE DATOS
-                servicio.agregar(nroPedido, agregado.Codigo, 4);
+                servicio.agregar(nroPedido, agregado.Codigo);
 
                 //AGREGO A LA LISTA DE PRODUCTOS EL PRODUCTO ACTUAL y LA CARGO A LA DGV                            
-                listaProductos.Add(agregado);
+                //listaProductos.Add(agregado);
+                //dgvProductos.DataSource = listaProductos;
+                //dgvProductos.DataBind();
+
+                // A VER SI FUNCA
+                Pedido_ProductoServicio PedProServicio = new Pedido_ProductoServicio();
+                PedidoServicio pedido = new PedidoServicio();
+                int numeroPedido = pedido.BuscarNroPedido(4);
+                List<Pedido_Producto> ListaPedidoProducto = PedProServicio.getLista(nroPedido);
+                List<Producto> listaProductos = productoServicio.listarProductosXPedido(ListaPedidoProducto, nroPedido);
                 dgvProductos.DataSource = listaProductos;
                 dgvProductos.DataBind();
 
-                
             }
             catch (Exception ex)
             {
