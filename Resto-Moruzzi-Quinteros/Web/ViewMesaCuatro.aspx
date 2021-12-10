@@ -33,7 +33,12 @@
              <p class="h3" style="color:black">Productos Agregados:</p>
          </div>
          <div>
-             <asp:GridView ID="dgvProductos" runat="server" class="form-select" ></asp:GridView>
+             <asp:GridView ID="dgvProductos" runat="server" class="form-select" OnRowDataBound="dgvProductos_RowDataBound"></asp:GridView>
+         </div>
+
+         <div style="color:black;text-align:center" class="Lead" >
+             <asp:Label Text="Monto: $" runat="server" />
+             <asp:Label Id="lblMonto" runat="server" />
          </div>
     </div>
 

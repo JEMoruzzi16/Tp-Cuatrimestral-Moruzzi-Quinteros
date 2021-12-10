@@ -12,13 +12,23 @@ namespace Web
     {
 
         private List<Producto> listaProductos = new List<Producto>();
-                TipoDeProductoServicio tipoServicio = new TipoDeProductoServicio();
-                ProductoServicio productoServicio = new ProductoServicio();
-                Pedido_ProductoServicio PedProServicio = new Pedido_ProductoServicio();
-                PedidoServicio pedido = new PedidoServicio();
-                int nroMesa = 4;
+        TipoDeProductoServicio tipoServicio = new TipoDeProductoServicio();
+        ProductoServicio productoServicio = new ProductoServicio();
+        Pedido_ProductoServicio PedProServicio = new Pedido_ProductoServicio();
+        PedidoServicio pedido = new PedidoServicio();
+        int nroMesa = 4;
+        decimal monto = 0;
+        
+        protected decimal montoPedido(List<Producto> listaProductos)
+        {
+            decimal montoPedido=0;
 
-
+            foreach (Producto item in listaProductos)
+            {
+                montoPedido += item.Precio;
+            }
+            return montoPedido;
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             dgvProductos.DataSource = listaProductos;
@@ -38,27 +48,10 @@ namespace Web
                     ddlTipoProducto.DataValueField = "IdTipoProducto";
                     ddlTipoProducto.DataBind();
 
-                    //int nroPedido = pedido.BuscarNroPedido(nroMesa);
-                    //List<Pedido_Producto> ListaPedidoProducto = PedProServicio.getLista(nroPedido);
-                    //List<Producto> listaProductos = productoServicio.listarProductosXPedido(ListaPedidoProducto,nroPedido);
-                    //dgvProductos.DataSource = listaProductos;
-                    //dgvProductos.DataBind();
-                    listaPedido(nroMesa,  pedido, PedProServicio, productoServicio);
+                    monto=montoPedido(listaPedido(nroMesa, pedido, PedProServicio, productoServicio));
+                    lblMonto.Text = monto.ToString();
 
-                }
-                else
-                {
-
-                }
-                //else if(IsPostBack)
-                //{
-                //    int nroPedido = pedido.BuscarNroPedido(nroMesa);
-                //    List<Pedido_Producto> ListaPedidoProducto = PedProServicio.getLista(nroPedido);
-                //    List<Producto> listaProductos = productoServicio.listarProductosXPedido(ListaPedidoProducto, nroPedido);
-                //    dgvProductos.DataSource = listaProductos;
-                //    dgvProductos.DataBind();
-                //}
-                
+                }                
             }
             catch (Exception ex)
             {
@@ -74,6 +67,8 @@ namespace Web
             ddlProducto.DataValueField = "IdTipoProducto";
             ddlProducto.DataBind();
             listaPedido(nroMesa, pedido, PedProServicio, productoServicio);
+            monto = montoPedido(listaPedido(nroMesa, pedido, PedProServicio, productoServicio));
+            lblMonto.Text = monto.ToString();
         }
         protected void btnVolver_Click(object sender, EventArgs e)
         {
@@ -111,8 +106,9 @@ namespace Web
                 int numeroPedido = pedido.BuscarNroPedido(4);
                 List<Pedido_Producto> ListaPedidoProducto = PedProServicio.getLista(nroPedido);
                 List<Producto> listaProductos = productoServicio.listarProductosXPedido(ListaPedidoProducto, nroPedido);
-                dgvProductos.DataSource = listaProductos;
-                dgvProductos.DataBind();
+                listaPedido(nroMesa, pedido, PedProServicio, productoServicio);
+                monto = montoPedido(listaPedido(nroMesa, pedido, PedProServicio, productoServicio));
+                lblMonto.Text = monto.ToString();
 
             }
             catch (Exception ex)
@@ -122,13 +118,33 @@ namespace Web
             }
 
         }
-
-        protected void listaPedido(int nroMesa, PedidoServicio pedido,Pedido_ProductoServicio PedProServicio, ProductoServicio productoServicio) {
+        protected List<Producto> listaPedido(int nroMesa, PedidoServicio pedido,Pedido_ProductoServicio PedProServicio, ProductoServicio productoServicio) {
             int nroPedido = pedido.BuscarNroPedido(nroMesa);
             List<Pedido_Producto> ListaPedidoProducto = PedProServicio.getLista(nroPedido);
             List<Producto> listaProductos = productoServicio.listarProductosXPedido(ListaPedidoProducto, nroPedido);
             dgvProductos.DataSource = listaProductos;
             dgvProductos.DataBind();
+            return listaProductos;
+        }
+
+        protected void dgvProductos_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
+            if (e.Row.RowType == DataControlRowType.Header)
+            {
+                e.Row.Cells[1].Visible = false;
+                e.Row.Cells[3].Visible = false;
+                e.Row.Cells[4].Visible = false;
+
+            }
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Cells[1].Visible = false;
+                e.Row.Cells[3].Visible = false;
+                e.Row.Cells[4].Visible = false;
+
+            }
+
         }
     }
 }
