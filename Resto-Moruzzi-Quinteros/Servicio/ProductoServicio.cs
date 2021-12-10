@@ -31,6 +31,9 @@ namespace Servicio
 
                     lista.Add(aux);
 
+
+
+
                 }
                 return lista;
             }
@@ -182,22 +185,22 @@ namespace Servicio
         {
 
             List<Producto> lista = new List<Producto>();
-            AccesoDatos datos = new AccesoDatos();
-            AccesoDatos datos1 = new AccesoDatos();
+            //AccesoDatos datos1 = new AccesoDatos();
             try
             {
-                datos1.setearConsulta("SELECT CodigoProducto FROM Pedido_Producto WHERE NroPedido = @Pedido");
-                datos1.setearParametro("@pedido",nroPedido );
-                datos1.ejecutarLectura();
+                //datos1.setearConsulta("SELECT CodigoProducto FROM Pedido_Producto WHERE NroPedido = @Pedido");
+                //datos1.setearParametro("@pedido",nroPedido );
+                //datos1.ejecutarLectura();
 
-                while (datos1.Lector.Read())
+
+                foreach (Pedido_Producto item in ListaPedidoProducto)
                 {
+                    AccesoDatos datos = new AccesoDatos();
                     datos.setearConsulta("SELECT Pr.Codigo, Pr.IdTipoProducto,Pr.DescripcionPlato, Pr.Precio, Pr.Stock FROM Producto as Pr where Pr.Codigo=@codigo");
-                    datos.setearParametro("@codigo",(int)datos1.Lector["CodigoProducto"]);
-                    int aver= (int)datos1.Lector["CodigoProducto"];
+                    datos.setearParametro("@codigo", item.codigoProducto);
                     datos.ejecutarLectura();
 
-                    while (datos.Lector.Read())
+                    if (datos.Lector.Read())
                     {
                         Producto aux = new Producto();
                         aux.Codigo = (int)datos.Lector["Codigo"];
@@ -207,8 +210,33 @@ namespace Servicio
                         aux.DescripcionPlato = (string)datos.Lector["DescripcionPlato"];
 
                         lista.Add(aux);
+                        datos.cerrarConexion();
+                        
                     }
+
                 }
+
+
+
+                //while (datos1.Lector.Read())
+                //{
+                //    datos.setearConsulta("SELECT Pr.Codigo, Pr.IdTipoProducto,Pr.DescripcionPlato, Pr.Precio, Pr.Stock FROM Producto as Pr where Pr.Codigo=@codigo");
+                //    datos.setearParametro("@codigo",(int)datos1.Lector["CodigoProducto"]);
+                //    int aver= (int)datos1.Lector["CodigoProducto"];
+                //    datos.ejecutarLectura();
+
+                //    while (datos.Lector.Read())
+                //    {
+                //        Producto aux = new Producto();
+                //        aux.Codigo = (int)datos.Lector["Codigo"];
+                //        aux.IdTipoProducto = (int)datos.Lector["IdTipoProducto"];
+                //        aux.Precio = (decimal)datos.Lector["Precio"];
+                //        aux.Stock = (int)datos.Lector["Stock"];
+                //        aux.DescripcionPlato = (string)datos.Lector["DescripcionPlato"];
+
+                //        lista.Add(aux);
+                //    }
+                //}
                 return lista;
             }
             catch (Exception ex)
@@ -217,8 +245,8 @@ namespace Servicio
             }
             finally
             {
-                datos.cerrarConexion();
-                datos1.cerrarConexion();
+                //datos.cerrarConexion();
+                //datos1.cerrarConexion();
             }
 
         }
