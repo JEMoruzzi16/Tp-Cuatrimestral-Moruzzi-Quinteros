@@ -285,45 +285,45 @@ namespace Web
         protected void btnGestionarUno_Click(object sender, EventArgs e)
         {
             Session.Add("nroMesa", 1);
-            Response.Redirect("ViewMesaUno.aspx");
+            Response.Redirect("ViewMesa.aspx");
 
         }
         protected void btnGestionarDos_Click(object sender, EventArgs e)
         {
             Session.Add("nroMesa", 2);
-            Response.Redirect("ViewMesaUno.aspx");
+            Response.Redirect("ViewMesa.aspx");
         }
         protected void btnGestionarTres_Click(object sender, EventArgs e)
         {
             Session.Add("nroMesa", 3);
-            Response.Redirect("ViewMesaUno.aspx");
+            Response.Redirect("ViewMesa.aspx");
         }
         protected void btnGestionarCuatro_Click(object sender, EventArgs e)
         {
             Session.Add("nroMesa", 4);
-            Response.Redirect("ViewMesaUno.aspx");
+            Response.Redirect("ViewMesa.aspx");
         }
         protected void btnGestionarCinco_Click(object sender, EventArgs e)
         {
             Session.Add("nroMesa", 5);
-            Response.Redirect("ViewMesaUno.aspx");
+            Response.Redirect("ViewMesa.aspx");
         }
         protected void btnGestionarSeis_Click(object sender, EventArgs e)
         {
             Session.Add("nroMesa", 6);
-            Response.Redirect("ViewMesaUno.aspx");
+            Response.Redirect("ViewMesa.aspx");
 
         }
         protected void btnGestionarSiete_Click(object sender, EventArgs e)
         {
             Session.Add("nroMesa", 7);
-            Response.Redirect("ViewMesaUno.aspx");
+            Response.Redirect("ViewMesa.aspx");
 
         }
         protected void btnGestionarOcho_Click(object sender, EventArgs e)
         {
             Session.Add("nroMesa", 8);
-            Response.Redirect("ViewMesaUno.aspx");
+            Response.Redirect("ViewMesa.aspx");
 
         }
 

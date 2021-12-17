@@ -4,36 +4,25 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Servicio;
 using Dominio;
+using Servicio;
 
 namespace Web
 {
-    public partial class ViewMesaUno : System.Web.UI.Page
+    public partial class ViewMesa : System.Web.UI.Page
     {
-
         private List<Producto> listaProductos = new List<Producto>();
         TipoDeProductoServicio tipoServicio = new TipoDeProductoServicio();
         ProductoServicio productoServicio = new ProductoServicio();
         Pedido_ProductoServicio PedProServicio = new Pedido_ProductoServicio();
         PedidoServicio pedido = new PedidoServicio();
-
-        //int nroMesa = 1;
+        
         decimal monto = 0;
-
-        protected decimal montoPedido(List<Producto> listaProductos)
-        {
-            decimal montoPedido = 0;
-
-            foreach (Producto item in listaProductos)
-            {
-                montoPedido += item.Precio;
-            }
-            return montoPedido;
-        }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+            tituloMesa.Text = Convert.ToString( (int)Session["nroMesa"]);
 
             dgvProductos.DataSource = listaProductos;
             dgvProductos.DataBind();
@@ -62,8 +51,8 @@ namespace Web
                 throw ex;
             }
 
-        
-    }
+
+        }
 
         protected void ddlTipoProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -165,6 +154,16 @@ namespace Web
             Session.Add("nroPedido", pedido.BuscarNroPedido((int)Session["nroMesa"]));
 
             Response.Redirect("CerrarPedido.aspx", false);
+        }
+        protected decimal montoPedido(List<Producto> listaProductos)
+        {
+            decimal montoPedido = 0;
+
+            foreach (Producto item in listaProductos)
+            {
+                montoPedido += item.Precio;
+            }
+            return montoPedido;
         }
     }
 }

@@ -1,9 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Pages/HomeMesero.Master" AutoEventWireup="true" CodeBehind="ViewMesaTres.aspx.cs" Inherits="Web.ViewMesaTres" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Pages/HomeMesero.Master" AutoEventWireup="true" CodeBehind="ViewMesa.aspx.cs" Inherits="Web.ViewMesa" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
  <br />
-    <div>
-        <p class="h2" style="color:black; text-align:center">Mesa Cuatro</p>
+    <div style="color: black;text-align:center;" class="h2">
+        <asp:Label Text="Mesa " runat="server" />
+        <asp:Label id="tituloMesa" runat="server" />
         
+
     </div>
   
      <div class="container" style="width:30%">
@@ -11,7 +13,7 @@
 
         <div class="input-group mb-3">
          <label class="input-group-text" for="inputGroupSelect01">Categoría</label>
-            <asp:DropDownList id="ddlTipoProducto" AutoPostBack="true" class="form-select" 
+            <asp:DropDownList id="ddlTipoProducto"  AutoPostBack="true" class="form-select" 
              OnSelectedIndexChanged="ddlTipoProducto_SelectedIndexChanged"  runat="server" ></asp:DropDownList>
         </div>
         
@@ -45,6 +47,8 @@
              <asp:Button ID="btnCerrarPedido" runat="server" Text="Cerrar Pedido" class="btn-primary" OnClick="btnCerrarPedido_Click"/>
          </div>
     </div>
+
+
 
 
 
