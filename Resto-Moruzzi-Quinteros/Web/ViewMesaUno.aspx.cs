@@ -17,7 +17,8 @@ namespace Web
         ProductoServicio productoServicio = new ProductoServicio();
         Pedido_ProductoServicio PedProServicio = new Pedido_ProductoServicio();
         PedidoServicio pedido = new PedidoServicio();
-        int nroMesa = 1;
+
+        //int nroMesa = 1;
         decimal monto = 0;
 
         protected decimal montoPedido(List<Producto> listaProductos)
@@ -32,6 +33,7 @@ namespace Web
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            
 
             dgvProductos.DataSource = listaProductos;
             dgvProductos.DataBind();
@@ -50,7 +52,7 @@ namespace Web
                     ddlTipoProducto.DataValueField = "IdTipoProducto";
                     ddlTipoProducto.DataBind();
 
-                    monto = montoPedido(listaPedido(nroMesa, pedido, PedProServicio, productoServicio));
+                    monto = montoPedido(listaPedido((int)Session["nroMesa"], pedido, PedProServicio, productoServicio));
                     lblMonto.Text = monto.ToString();
 
                 }
@@ -70,8 +72,8 @@ namespace Web
             ddlProducto.DataTextField = "DescripcionPlato";
             ddlProducto.DataValueField = "IdTipoProducto";
             ddlProducto.DataBind();
-            listaPedido(nroMesa, pedido, PedProServicio, productoServicio);
-            monto = montoPedido(listaPedido(nroMesa, pedido, PedProServicio, productoServicio));
+            listaPedido((int)Session["nroMesa"], pedido, PedProServicio, productoServicio);
+            monto = montoPedido(listaPedido((int)Session["nroMesa"], pedido, PedProServicio, productoServicio));
             lblMonto.Text = monto.ToString();
         }
 
@@ -89,7 +91,7 @@ namespace Web
                 Pedido_ProductoServicio servicio = new Pedido_ProductoServicio();
                 ProductoServicio productoServicio = new ProductoServicio();
                 PedidoServicio pedidoServicio = new PedidoServicio();
-                int nroPedido = pedidoServicio.BuscarNroPedido(nroMesa);
+                int nroPedido = pedidoServicio.BuscarNroPedido((int)Session["nroMesa"]);
 
 
                 //OBTENGO LA DESCRIPCION DEL PRODUCTO
@@ -113,8 +115,8 @@ namespace Web
                 int numeroPedido = pedido.BuscarNroPedido(4);
                 List<Pedido_Producto> ListaPedidoProducto = PedProServicio.getLista(nroPedido);
                 List<Producto> listaProductos = productoServicio.listarProductosXPedido(ListaPedidoProducto, nroPedido);
-                listaPedido(nroMesa, pedido, PedProServicio, productoServicio);
-                monto = montoPedido(listaPedido(nroMesa, pedido, PedProServicio, productoServicio));
+                listaPedido((int)Session["nroMesa"], pedido, PedProServicio, productoServicio);
+                monto = montoPedido(listaPedido((int)Session["nroMesa"], pedido, PedProServicio, productoServicio));
                 lblMonto.Text = monto.ToString();
 
             }
@@ -158,9 +160,9 @@ namespace Web
         {
             PedidoServicio pedido = new PedidoServicio();
 
-            Session.Add("mesa", nroMesa);
+            Session.Add("mesa", (int)Session["nroMesa"]);
             Session.Add("monto", lblMonto.Text);
-            Session.Add("nroPedido", pedido.BuscarNroPedido(nroMesa));
+            Session.Add("nroPedido", pedido.BuscarNroPedido((int)Session["nroMesa"]));
 
             Response.Redirect("CerrarPedido.aspx", false);
         }
