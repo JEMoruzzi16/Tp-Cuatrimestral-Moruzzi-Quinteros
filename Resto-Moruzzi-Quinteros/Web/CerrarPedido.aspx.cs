@@ -59,6 +59,7 @@ namespace Web
                 pedido.IdMetodoPago = metodoServicio.metodoPorDescripcion(metodoPago);
                 pedido.nroMesa = (int)Session["mesa"];
                 pedido.Estado = false;
+                pedido.Monto = Convert.ToDecimal(lblMonto.Text);
 
                 pedidoServicio.grabarPedido(pedido);
 

@@ -126,7 +126,6 @@ namespace Web
             dgvProductos.DataBind();
             return listaProductos;
         }
-
         protected void dgvProductos_RowDataBound(object sender, GridViewRowEventArgs e)
         {
 
@@ -146,7 +145,6 @@ namespace Web
             }
 
         }
-
         protected void btnCerrarPedido_Click(object sender, EventArgs e)
         {
             PedidoServicio pedido = new PedidoServicio();
@@ -154,8 +152,6 @@ namespace Web
             Session.Add("mesa", nroMesa);
             Session.Add("monto", lblMonto.Text);
             Session.Add("nroPedido", pedido.BuscarNroPedido(nroMesa));
-
-
 
             Response.Redirect("CerrarPedido.aspx",false);
         }
