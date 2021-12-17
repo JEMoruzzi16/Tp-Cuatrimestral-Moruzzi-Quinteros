@@ -61,17 +61,7 @@
                  </ul>
                 </li>
 
-                  <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="ddlMesas" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Mesas
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href=""> - </a></li>
-                    <li><a class="dropdown-item" href=""> - </a></li>
-                    <li><a class="dropdown-item" href=""> - </a></li>
-                    <li><a class="dropdown-item" href=""> - </a></li>
-                 </ul>
-                </li>
+                  
                 <li class="nav-item">
                     <asp:Button Text="Cerrar Sesión" ID="btnLoOut" class="btn btn-dark" OnClick="btnLoOut_Click" runat="server" />
                   </li> 

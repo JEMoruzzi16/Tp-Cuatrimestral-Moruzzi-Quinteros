@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Pages/HomeMesero.Master" AutoEventWireup="true" CodeBehind="ViewMesaCuatro.aspx.cs" Inherits="Web.ViewMesaCuatro" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master Pages/HomeMesero.Master" AutoEventWireup="true" CodeBehind="ViewMesaDos.aspx.cs" Inherits="Web.ViewMesaDos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <div>
@@ -45,6 +45,10 @@
              <asp:Button ID="btnCerrarPedido" runat="server" Text="Cerrar Pedido" class="btn-primary" OnClick="btnCerrarPedido_Click"/>
          </div>
     </div>
+
+
+
+
 
 
 </asp:Content>

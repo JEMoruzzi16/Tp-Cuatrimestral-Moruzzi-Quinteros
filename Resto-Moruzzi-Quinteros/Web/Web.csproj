@@ -258,7 +258,14 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Master Pages\Site.Master" />
+    <Content Include="ViewMesaCinco.aspx" />
     <Content Include="ViewMesaCuatro.aspx" />
+    <Content Include="ViewMesaDos.aspx" />
+    <Content Include="ViewMesaOcho.aspx" />
+    <Content Include="ViewMesaSeis.aspx" />
+    <Content Include="ViewMesaSiete.aspx" />
+    <Content Include="ViewMesaTres.aspx" />
+    <Content Include="ViewMesaUno.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -418,12 +425,61 @@
     <Compile Include="Master Pages\Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="ViewMesaCinco.aspx.cs">
+      <DependentUpon>ViewMesaCinco.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMesaCinco.aspx.designer.cs">
+      <DependentUpon>ViewMesaCinco.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewMesaCuatro.aspx.cs">
       <DependentUpon>ViewMesaCuatro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewMesaCuatro.aspx.designer.cs">
       <DependentUpon>ViewMesaCuatro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMesaDos.aspx.cs">
+      <DependentUpon>ViewMesaDos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMesaDos.aspx.designer.cs">
+      <DependentUpon>ViewMesaDos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMesaOcho.aspx.cs">
+      <DependentUpon>ViewMesaOcho.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMesaOcho.aspx.designer.cs">
+      <DependentUpon>ViewMesaOcho.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMesaSeis.aspx.cs">
+      <DependentUpon>ViewMesaSeis.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMesaSeis.aspx.designer.cs">
+      <DependentUpon>ViewMesaSeis.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMesaSiete.aspx.cs">
+      <DependentUpon>ViewMesaSiete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMesaSiete.aspx.designer.cs">
+      <DependentUpon>ViewMesaSiete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMesaTres.aspx.cs">
+      <DependentUpon>ViewMesaTres.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMesaTres.aspx.designer.cs">
+      <DependentUpon>ViewMesaTres.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMesaUno.aspx.cs">
+      <DependentUpon>ViewMesaUno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMesaUno.aspx.designer.cs">
+      <DependentUpon>ViewMesaUno.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
