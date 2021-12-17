@@ -8,7 +8,7 @@ using Servicio;
 
 namespace Servicio
 {
-    class MetodoDePagoServicio
+    public class MetodoDePagoServicio
     {
         public List<MetodoPago> listar()
         {
@@ -17,12 +17,12 @@ namespace Servicio
 
             try
             {
-                datos.setearConsulta("SELECT Mp.Id, Mp.Descripcion FROM MetodoPago as MP");
+                datos.setearConsulta("SELECT Id, Descripcion FROM MetodoPago");
                 datos.ejecutarLectura();
                 while (datos.Lector.Read())
                 {
                     MetodoPago aux = new MetodoPago();
-                    aux.Id = (Char)datos.Lector["Id"];
+                    aux.Id = (int)datos.Lector["Id"];
                     aux.Descripcion = (String)datos.Lector["Descripcion"];
                     lista.Add(aux);
                 }
@@ -38,5 +38,36 @@ namespace Servicio
                 datos.cerrarConexion();
             }
         }
+
+        public int metodoPorDescripcion(string descripcion)
+        {
+            MetodoPago metodo = new MetodoPago();
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                int idMetodo=0;
+
+                datos.setearConsulta("SELECT Id FROM MetodoPago where Descripcion=@descripcion");
+                datos.setearParametro("descripcion", descripcion);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+                    MetodoPago aux = new MetodoPago();
+                    aux.Id = (int)datos.Lector["Id"];
+                    idMetodo = aux.Id;
+                }
+
+                    return idMetodo;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
     }
 }

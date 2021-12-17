@@ -10,7 +10,7 @@ namespace Servicio
 {
     public class PedidoServicio
     {
-        public int nuevo(int id, char metodo,int nroMesa)
+        public int nuevo(int id, int metodo,int nroMesa)
         {
             Pedido nuevoPedido = new Pedido();
             AccesoDatos datos = new AccesoDatos();
@@ -64,7 +64,6 @@ namespace Servicio
             }
 
         }
-
         public int BuscarNroPedido(int nroMesa)
         {
             AccesoDatos datos = new AccesoDatos();
@@ -91,6 +90,37 @@ namespace Servicio
             }
 
 
+        }
+
+        public void grabarPedido(Pedido pedido)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            UsuarioServicio usuarioServicio = new UsuarioServicio();
+
+
+            try
+            {
+                Usuario aux = usuarioServicio.buscarXUsuario(pedido.UsuarioMesero);
+                datos.setearConsulta("update Pedido set Monto=@Monto,Estado=@Estado, IdMetodoPago=@IdMetodoPago where Nro= @Nro;");
+                //datos.setearConsulta("INSERT INTO Pedido (Monto,IdMetodoPago,Estado) VALUES (@Nro,@IdMesero,@Fecha,@Monto,@IdMetodoPago,@NroMesa,@Estado) where Nro=@Nro");
+                datos.setearParametro("Nro",pedido.NumeroPedido);
+                //datos.setearParametro("IdMesero",aux.Id);
+                datos.setearParametro("Monto",pedido.Monto);
+                datos.setearParametro("IdMetodoPago",pedido.IdMetodoPago);
+                datos.setearParametro("Estado",pedido.Estado);
+                datos.ejecutarAccion();
+
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
         }
     }
 }

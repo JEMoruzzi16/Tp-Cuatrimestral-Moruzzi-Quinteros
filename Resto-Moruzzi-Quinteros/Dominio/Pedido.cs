@@ -12,7 +12,7 @@ namespace Dominio
         public string UsuarioMesero { get; set; }
         public DateTime Fecha { get; set; }
         public Decimal Monto { get; set; }
-        public char IdMetodoPago { get; set; }
+        public int IdMetodoPago { get; set; }
         public Boolean Estado { get; set; }
         public int nroMesa { get; set; }
         

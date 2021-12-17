@@ -18,7 +18,7 @@ CREATE TABLE Producto(
 )
 go
 CREATE TABLE MetodoPago(
-    Id char PRIMARY KEY NOT NULL ,
+    Id int PRIMARY KEY NOT NULL ,
     Descripcion VARCHAR(20) NOT NULL UNIQUE,
     Estado BIT not null DEFAULT 1
 )
@@ -40,16 +40,6 @@ CREATE TABLE Usuarios(
 	Estado bit default 1 not null
 )
 GO
-create table Pedido(
-    Nro int PRIMARY KEY IDENTITY(1,1) not null,
-    IdMesero int FOREIGN KEY REFERENCES Usuarios(Id) not null,
-    Fecha DATETIME not null,
-    Monto Decimal (10,2) NOT null,
-    IdMetodoPago char FOREIGN KEY REFERENCES MetodoPago(Id) not null,
-	NroMesa int FOREIGN key REFERENCES Mesa(Nro),
-	Estado bit DEFAULT 1 NOT NULL
-)
-GO
 Create table Mesa(
     Nro int Primary key not null,
     Estado bit DEFAULT 0,
@@ -57,6 +47,16 @@ Create table Mesa(
 
 )
 go
+create table Pedido(
+    Nro int PRIMARY KEY IDENTITY(1,1) not null,
+    IdMesero int FOREIGN KEY REFERENCES Usuarios(Id) not null,
+    Fecha DATETIME not null,
+    Monto Decimal (10,2) NOT null,
+    IdMetodoPago int FOREIGN KEY REFERENCES MetodoPago(Id) not null,
+	NroMesa int FOREIGN key REFERENCES Mesa(Nro),
+	Estado bit DEFAULT 1 NOT NULL
+)
+GO
 create table Pedido_Producto(
     NroPedido int FOREIGN KEY REFERENCES Pedido(Nro) null,
     CodigoProducto int FOREIGN KEY REFERENCES Producto(Codigo) not null

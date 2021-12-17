@@ -146,5 +146,18 @@ namespace Web
             }
 
         }
+
+        protected void btnCerrarPedido_Click(object sender, EventArgs e)
+        {
+            PedidoServicio pedido = new PedidoServicio();
+            
+            Session.Add("mesa", nroMesa);
+            Session.Add("monto", lblMonto.Text);
+            Session.Add("nroPedido", pedido.BuscarNroPedido(nroMesa));
+
+
+
+            Response.Redirect("CerrarPedido.aspx",false);
+        }
     }
 }

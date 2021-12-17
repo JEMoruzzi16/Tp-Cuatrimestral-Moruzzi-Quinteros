@@ -116,6 +116,7 @@
     <Content Include="ABM aspx\Modificar\ModificarUsuario.aspx" />
     <Content Include="ABM aspx\Agregar\AgregarProducto.aspx" />
     <Content Include="ABM aspx\Agregar\AgregarTipoProducto.aspx" />
+    <Content Include="CerrarPedido.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -335,6 +336,13 @@
     </Compile>
     <Compile Include="ABM aspx\Eliminar\EliminarProducto.aspx.designer.cs">
       <DependentUpon>EliminarProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CerrarPedido.aspx.cs">
+      <DependentUpon>CerrarPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CerrarPedido.aspx.designer.cs">
+      <DependentUpon>CerrarPedido.aspx</DependentUpon>
     </Compile>
     <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>

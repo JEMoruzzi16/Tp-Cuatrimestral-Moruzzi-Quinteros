@@ -160,7 +160,7 @@ namespace Web
             UsuarioServicio usuServicio = new UsuarioServicio();
             Usuario aux = usuServicio.buscarXUsuario(usuario);
             //Mediante el id, insertamos un nuevo pedido y obtenemos el numero de pedido
-            int numeroPedido=pedidosServicio.nuevo(aux.Id, 'T',4);
+            int numeroPedido=pedidosServicio.nuevo(aux.Id, 1,4);
             Session.Add("mesaCuatro",numeroPedido);
 
         }

@@ -40,6 +40,10 @@
              <asp:Label Text="Monto: $" runat="server" />
              <asp:Label Id="lblMonto" runat="server" />
          </div>
+
+         <div>
+             <asp:Button ID="btnCerrarPedido" runat="server" Text="Cerrar Pedido" class="btn-primary" OnClick="btnCerrarPedido_Click"/>
+         </div>
     </div>
 
 
