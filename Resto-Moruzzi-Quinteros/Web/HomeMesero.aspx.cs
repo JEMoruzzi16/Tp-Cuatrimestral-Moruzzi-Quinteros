@@ -20,120 +20,129 @@ namespace Web
                 Response.Redirect("Error.aspx");
 
             }
-
+            
             Mesa mesaUno,mesaDos, mesaTres, mesaCuatro,mesaCinco,mesaSeis,mesaSiete,mesaOcho;
             MesaServicio mesaServicio = new MesaServicio();
-            mesaUno = mesaServicio.dibujarMesa(1);
-            mesaDos = mesaServicio.dibujarMesa(2);
-            mesaTres = mesaServicio.dibujarMesa(3);
-            mesaCuatro = mesaServicio.dibujarMesa(4);
-            mesaCinco = mesaServicio.dibujarMesa(5);
-            mesaSeis = mesaServicio.dibujarMesa(6);
-            mesaSiete = mesaServicio.dibujarMesa(7);
-            mesaOcho = mesaServicio.dibujarMesa(8);
-            lblCapacidad.Text = Convert.ToString(mesaUno.MaxCapacidad);
-            lblCapacidad2.Text = Convert.ToString(mesaDos.MaxCapacidad);
-            lblCapacidad3.Text = Convert.ToString(mesaTres.MaxCapacidad);
-            lblCapacidad4.Text = Convert.ToString(mesaCuatro.MaxCapacidad);
-            lblCapacidad5.Text = Convert.ToString(mesaCinco.MaxCapacidad);
-            lblCapacidad6.Text = Convert.ToString(mesaSeis.MaxCapacidad);
-            lblCapacidad7.Text = Convert.ToString(mesaSiete.MaxCapacidad);
-            lblCapacidad8.Text = Convert.ToString(mesaOcho.MaxCapacidad);
 
-            if (mesaUno.Estado == true)
+            if(((Usuario)Session["usuario"]).NombreUsuario == "juli")
             {
-                lblmesaUnoEstado.Text = "Abierta";
-                btnAbrirUno.Enabled = false;
-            }
-            else
-            {
-                lblmesaUnoEstado.Text = "Cerrada";
-                btnAbrirUno.Enabled = true;
-                btnGestionarUno.Enabled = false;
-            }
+                mesaUno = mesaServicio.dibujarMesa(1);
+                mesaDos = mesaServicio.dibujarMesa(2);
+                mesaTres = mesaServicio.dibujarMesa(3);
+                mesaCuatro = mesaServicio.dibujarMesa(4);
+                
+                lblCapacidad.Text = Convert.ToString(mesaUno.MaxCapacidad);
+                lblCapacidad2.Text = Convert.ToString(mesaDos.MaxCapacidad);
+                lblCapacidad3.Text = Convert.ToString(mesaTres.MaxCapacidad);
+                lblCapacidad4.Text = Convert.ToString(mesaCuatro.MaxCapacidad);
+                
+                    if (mesaUno.Estado == true)
+                    {
+                        lblmesaUnoEstado.Text = "Abierta";
+                        btnAbrirUno.Enabled = false;
+                    }
+                    else
+                    {
+                        lblmesaUnoEstado.Text = "Cerrada";
+                        btnAbrirUno.Enabled = true;
+                        btnGestionarUno.Enabled = false;
+                    }
 
-            if (mesaDos.Estado == true)
-            {
-                lblMesaDosEstado.Text = "Abierta";
-                btnAbrirDos.Enabled = false;
-            }
-            else
-            {
-                lblMesaDosEstado.Text = "Cerrada";
-                btnAbrirDos.Enabled = true;
-                btnGestionarDos.Enabled = false;
-            }
-            
-            if (mesaTres.Estado == true)
-            {
-                lblMesaTresEstado.Text = "Abierta";
-                btnAbrirTres.Enabled = false;
-            }
-            else
-            {
-                lblMesaTresEstado.Text = "Cerrada";
-                btnAbrirTres.Enabled = true;
-                btnGestionarTres.Enabled = false;
-            }
-            
-            if (mesaCuatro.Estado == true)
-            {
-                lblMesaCuatroEstado.Text = "Abierta";
-                btnAbrirCuatro.Enabled = false;
-            }
-            else
-            {
-                lblMesaCuatroEstado.Text = "Cerrada";
-                btnAbrirCuatro.Enabled = true;
-                btnGestionarCuatro.Enabled = false;
-            }
+                    if (mesaDos.Estado == true)
+                    {
+                        lblMesaDosEstado.Text = "Abierta";
+                        btnAbrirDos.Enabled = false;
+                    }
+                    else
+                    {
+                        lblMesaDosEstado.Text = "Cerrada";
+                        btnAbrirDos.Enabled = true;
+                        btnGestionarDos.Enabled = false;
+                    }
 
-            if (mesaCinco.Estado==true)
-            {
-                lblMesaCincoEstado.Text = "Abierta";
-                btnAbrirCinco.Enabled = false;
-            }
-            else
-            {
-                lblMesaCincoEstado.Text = "Cerrada";
-                btnAbrirCinco.Enabled = true;
-                btnGestionarCinco.Enabled = false;
-            }
+                    if (mesaTres.Estado == true)
+                    {
+                        lblMesaTresEstado.Text = "Abierta";
+                        btnAbrirTres.Enabled = false;
+                    }
+                    else
+                    {
+                        lblMesaTresEstado.Text = "Cerrada";
+                        btnAbrirTres.Enabled = true;
+                        btnGestionarTres.Enabled = false;
+                    }
 
-            if (mesaSeis.Estado == true)
-            {
-                lblMesaSeisEstado.Text = "Abierta";
-                btnAbrirSeis.Enabled = false;
+                    if (mesaCuatro.Estado == true)
+                    {
+                        lblMesaCuatroEstado.Text = "Abierta";
+                        btnAbrirCuatro.Enabled = false;
+                    }
+                    else
+                    {
+                        lblMesaCuatroEstado.Text = "Cerrada";
+                        btnAbrirCuatro.Enabled = true;
+                        btnGestionarCuatro.Enabled = false;
+                    }
             }
-            else
+            else if(((Usuario)Session["usuario"]).NombreUsuario == "david")
             {
-                lblMesaSeisEstado.Text = "Cerrada";
-                btnAbrirSeis.Enabled = true;
-                btnGestionarSeis.Enabled = false;
-            }
+                mesaCinco = mesaServicio.dibujarMesa(5);
+                mesaSeis = mesaServicio.dibujarMesa(6);
+                mesaSiete = mesaServicio.dibujarMesa(7);
+                mesaOcho = mesaServicio.dibujarMesa(8);
 
-            if (mesaSiete.Estado == true)
-            {
-                lblMesaSieteEstado.Text = "Abierta";
-                btnAbrirSiete.Enabled = false;
-            }
-            else
-            {
-                lblMesaSieteEstado.Text = "Cerrada";
-                btnAbrirSiete.Enabled = true;
-                btnGestionarSiete.Enabled = false;
-            }
+                lblCapacidad5.Text = Convert.ToString(mesaCinco.MaxCapacidad);
+                lblCapacidad6.Text = Convert.ToString(mesaSeis.MaxCapacidad);
+                lblCapacidad7.Text = Convert.ToString(mesaSiete.MaxCapacidad);
+                lblCapacidad8.Text = Convert.ToString(mesaOcho.MaxCapacidad);
 
-            if (mesaOcho.Estado == true)
-            {
-                lblMesaOchoEstado.Text = "Abierta";
-                btnAbrirOcho.Enabled = false;
-            }
-            else
-            {
-                lblMesaOchoEstado.Text = "Cerrada";
-                btnAbrirOcho.Enabled = true;
-                btnGestionarOcho.Enabled = false;
+                    if (mesaCinco.Estado == true)
+                    {
+                        lblMesaCincoEstado.Text = "Abierta";
+                        btnAbrirCinco.Enabled = false;
+                    }
+                    else
+                    {
+                        lblMesaCincoEstado.Text = "Cerrada";
+                        btnAbrirCinco.Enabled = true;
+                        btnGestionarCinco.Enabled = false;
+                    }
+
+                    if (mesaSeis.Estado == true)
+                    {
+                        lblMesaSeisEstado.Text = "Abierta";
+                        btnAbrirSeis.Enabled = false;
+                    }
+                    else
+                    {
+                        lblMesaSeisEstado.Text = "Cerrada";
+                        btnAbrirSeis.Enabled = true;
+                        btnGestionarSeis.Enabled = false;
+                    }
+
+                    if (mesaSiete.Estado == true)
+                    {
+                        lblMesaSieteEstado.Text = "Abierta";
+                        btnAbrirSiete.Enabled = false;
+                    }
+                    else
+                    {
+                        lblMesaSieteEstado.Text = "Cerrada";
+                        btnAbrirSiete.Enabled = true;
+                        btnGestionarSiete.Enabled = false;
+                    }
+
+                    if (mesaOcho.Estado == true)
+                    {
+                        lblMesaOchoEstado.Text = "Abierta";
+                        btnAbrirOcho.Enabled = false;
+                    }
+                    else
+                    {
+                        lblMesaOchoEstado.Text = "Cerrada";
+                        btnAbrirOcho.Enabled = true;
+                        btnGestionarOcho.Enabled = false;
+                    }
             }
 
         }
