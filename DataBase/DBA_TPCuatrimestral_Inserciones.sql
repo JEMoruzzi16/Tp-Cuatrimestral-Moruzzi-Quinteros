@@ -90,10 +90,11 @@ INSERT INTO Mesa(Nro,Capacidad) VALUES(5,6)
 INSERT INTO Mesa(Nro,Capacidad) VALUES(6,6)
 INSERT INTO Mesa(Nro,Capacidad) VALUES(7,8)
 INSERT INTO Mesa(Nro,Capacidad) VALUES(8,8)
---USUARIO--
+--DATOS PERSONALES--
 INSERT INTO DatosPersonales(Usuario,Nombre,Apellido,FechaNacimiento,FechaIngreso,Estado) VALUES ('admin','admin', 'admin',11/11/2011,GETDATE(),1); 
+INSERT INTO DatosPersonales(Usuario,Nombre,Apellido,FechaNacimiento,FechaIngreso,Estado) VALUES ('juli','Julian', 'Moruzzi',08/08/1997,GETDATE(),1); 
+INSERT INTO DatosPersonales(Usuario,Nombre,Apellido,FechaNacimiento,FechaIngreso,Estado) VALUES ('david','David', 'Quinteros',08/08/1986,GETDATE(),1); 
+--USUARIO--
 INSERT INTO Usuarios(Usuario,Contrasena,Tipo,Estado) VALUES ('admin',123,2,1);
-INSERT INTO DatosPersonales(Usuario,Nombre,Apellido,FechaNacimiento,FechaIngreso,Estado) VALUES ('aaa','aaa', 'aaa',11/11/2011,GETDATE(),1); 
-INSERT INTO Usuarios(Usuario,Contrasena,Tipo,Estado) VALUES ('aaa',123,1,1);
-
-
+INSERT INTO Usuarios(Usuario,Contrasena,Tipo,Estado) VALUES ('juli',123,1,1);
+INSERT INTO Usuarios(Usuario,Contrasena,Tipo,Estado) VALUES ('david',123,1,1);
