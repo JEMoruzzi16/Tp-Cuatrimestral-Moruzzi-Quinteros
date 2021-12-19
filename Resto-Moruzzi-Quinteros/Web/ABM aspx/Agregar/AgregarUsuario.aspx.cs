@@ -18,6 +18,11 @@ namespace Web
 
         protected void btnAceptar_Click(object sender, EventArgs e)
         {
+
+            Page.Validate();
+            if (!Page.IsValid)
+                return;
+
             DatosPersonales newData = new DatosPersonales();
             Usuario newUser = new Usuario();
             DatosPersonalesServicio datosPersonalesServicio = new DatosPersonalesServicio();
@@ -26,7 +31,16 @@ namespace Web
             newData.NombreUsuario = txtUsuario.Text;
             newData.Nombre = txtNombre.Text;
             newData.Apellido = txtApellido.Text;
-            newData.FechaNac = DateTime.Parse(txtFechaNac.Text);
+            string dataTime = txtFechaNac.Text;
+            if(dataTime=="")
+            {
+                DateTime dt = new DateTime();
+                newData.FechaNac = dt;
+            }else
+            {
+                newData.FechaNac = Convert.ToDateTime( txtFechaNac.Text);
+            }
+
             newData.FechaIngreso = DateTime.Now;
 
             string aux = txtUsuario.Text;

@@ -18,6 +18,9 @@
  <%  
      try
      {
+       if(Session["salida"] == null)
+       {
+
          if (((Dominio.Usuario)Session["usuario"]).NombreUsuario == "juli")
          {
              Dominio.Usuario usuario = new Dominio.Usuario();
@@ -116,17 +119,22 @@
                 </div>
             </div>
    <%    }
-       }catch(Exception ex)
-       {
+        }
+            Session.Remove("salida");
+       }
+     catch(Exception ex)
+     {
            Session.Add("error", ex.ToString());
            Response.Redirect("error.aspx", false);
-       }
-       %>
+     }
+   %>
 
 
  <%
      try
      {
+       if(Session["salida2"] == null)
+       { 
          if (((Dominio.Usuario)Session["usuario"]).NombreUsuario == "david")
          { %>
           <div class="cards-container" style="display:flex;">
@@ -222,6 +230,8 @@
             </div>
           </div>
 <%       }
+        }
+            Session.Remove("salida2");
      }
     catch (Exception ex)
      {

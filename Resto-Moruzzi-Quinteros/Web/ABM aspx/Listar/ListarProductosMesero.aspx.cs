@@ -65,9 +65,6 @@ namespace Web.ABM_aspx.Listar
 
         }
 
-        protected void btnNuevoProducto_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("../Agregar/AgregarProducto.aspx", false);
-        }
+        
     }
 }

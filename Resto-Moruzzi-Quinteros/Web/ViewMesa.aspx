@@ -19,12 +19,13 @@
         
         <div class="input-group mb-3">
             <label class="input-group-text" for="inputGroupSelect01">Plato</label>
-            <asp:DropDownList ID="ddlProducto" class="form-select" runat="server" ></asp:DropDownList>
+            <asp:DropDownList ID="ddlProducto" class="form-select"  runat="server" ></asp:DropDownList>
         </div>
 
           <div style="display:flex">
             <div style="margin-right:130px">
-            <asp:Button Id="btnAgregar" Text="Agregar" class="btn btn-outline-secondary" OnClick="btnAgregar_Click" runat="server" />
+            <asp:Button Id="btnAgregar" Text="Agregar" class="btn btn-outline-secondary" 
+                OnClick="btnAgregar_Click" runat="server" Enabled="false"/>
             </div>
             <div>
                 <asp:Button Id="btnVolver" Text="Volver" class="btn btn-outline-secondary"  OnClick="btnVolver_Click" runat="server" />
@@ -44,7 +45,8 @@
          </div>
          <br />
          <div style="text-align:center">
-             <asp:Button ID="btnCerrarPedido" runat="server" Text="Cerrar Pedido" class="btn-primary" OnClick="btnCerrarPedido_Click"/>
+             <asp:Button ID="btnCerrarPedido" runat="server" Text="Cerrar Pedido" 
+                Enabled="false"  class="btn-primary" OnClick="btnCerrarPedido_Click"/>
          </div>
     </div>
 

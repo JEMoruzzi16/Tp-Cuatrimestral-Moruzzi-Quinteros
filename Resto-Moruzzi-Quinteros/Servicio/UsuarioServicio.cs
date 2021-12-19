@@ -39,13 +39,14 @@ namespace Servicio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.setearConsulta("SELECT Usr.Usuario, Usr.Contrasena, Usr.Tipo, Usr.Estado FROM Usuarios as Usr where Usr.Estado = 1");
+                datos.setearConsulta("SELECT Usr.Id,Usr.Usuario, Usr.Contrasena, Usr.Tipo, Usr.Estado FROM Usuarios as Usr where Usr.Estado = 1");
                 datos.ejecutarLectura();
 
 
                 while (datos.Lector.Read())
                 {
                     Usuario aux = new Usuario();
+                    aux.Id = (int)datos.Lector["Id"];
                     aux.NombreUsuario = datos.Lector["Usuario"].ToString();
                     aux.Contrasena = datos.Lector["Contrasena"].ToString();
                     aux.Tipo = (int)datos.Lector["Tipo"];

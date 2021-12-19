@@ -18,12 +18,10 @@
         </div>
         <br />
         <div style="display:flex" >
-            <div style="margin-right:50px">
+            <div style="margin-left:115px">
                 <asp:Button Text="Volver" ID="btnVolver" class="btn btn-outline-secondary" runat="server" OnClick="btnVolver_Click" />
             </div>
-            <div >
-                <asp:Button Text="Agregar Nuevo Plato" ID="btnNuevoProducto" class="btn btn-outline-secondary" runat="server" OnClick="btnNuevoProducto_Click"/>
-            </div>
+            
         </div>
     </div>
 </asp:Content>

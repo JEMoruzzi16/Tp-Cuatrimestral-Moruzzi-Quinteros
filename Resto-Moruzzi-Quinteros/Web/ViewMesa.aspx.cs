@@ -64,6 +64,7 @@ namespace Web
             listaPedido((int)Session["nroMesa"], pedido, PedProServicio, productoServicio);
             monto = montoPedido(listaPedido((int)Session["nroMesa"], pedido, PedProServicio, productoServicio));
             lblMonto.Text = monto.ToString();
+            btnAgregar.Enabled = true;
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)
@@ -107,7 +108,7 @@ namespace Web
                 listaPedido((int)Session["nroMesa"], pedido, PedProServicio, productoServicio);
                 monto = montoPedido(listaPedido((int)Session["nroMesa"], pedido, PedProServicio, productoServicio));
                 lblMonto.Text = monto.ToString();
-
+                
             }
             catch (Exception ex)
             {
@@ -123,6 +124,14 @@ namespace Web
             List<Producto> listaProductos = productoServicio.listarProductosXPedido(ListaPedidoProducto, nroPedido);
             dgvProductos.DataSource = listaProductos;
             dgvProductos.DataBind();
+            if (listaProductos.Count == 0)
+            {
+                btnCerrarPedido.Enabled = false;
+            }
+            else
+            {
+                btnCerrarPedido.Enabled = true;
+            }
             return listaProductos;
         }
 
@@ -165,5 +174,6 @@ namespace Web
             }
             return montoPedido;
         }
+
     }
 }
